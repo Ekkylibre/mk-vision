@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <div className="min-h-screen bg-black pt-20">
@@ -5,7 +7,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Image Section */}
           <div className="relative h-[600px] rounded-lg overflow-hidden">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1601506521793-dc748fc80b67?auto=format&fit=crop&q=80"
               alt="James Miller"
               className="object-cover w-full h-full"
