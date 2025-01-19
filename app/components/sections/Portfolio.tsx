@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
 import { PORTFOLIO_ITEMS } from '@/app/constants';
 import VideoCarousel from '@/app/components/VideoCarousel';
+import Image from 'next/image';
 
 interface VideoModalState {
   isOpen: boolean;
@@ -66,12 +67,15 @@ export default function Portfolio() {
               key={project.id}
               className="group relative aspect-video overflow-hidden rounded-lg bg-gray-900"
             >
-              <img
+              <Image
                 src={project.thumbnail}
                 alt={`Aperçu du projet ${project.title}`}
+                width={500}
+                height={300}
                 className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                priority
               />
-              <div 
+              <div
                 className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center"
               >
                 <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
@@ -101,7 +105,7 @@ export default function Portfolio() {
         {/* Before/After Comparison */}
         <div className="mt-16">
           <h3 className="text-2xl font-bold text-white mb-8">Avant / Après</h3>
-          <div 
+          <div
             className="relative aspect-video rounded-lg overflow-hidden cursor-ew-resize"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
@@ -119,7 +123,7 @@ export default function Portfolio() {
                 type="video/mp4"
               />
             </video>
-            
+
             {/* Before Video (Overlay) */}
             <div
               className="absolute inset-0 overflow-hidden"
@@ -131,7 +135,7 @@ export default function Portfolio() {
                 loop
                 playsInline
                 className="absolute inset-0 w-[100vw] max-w-none h-full object-cover"
-                style={{ 
+                style={{
                   filter: 'grayscale(1) contrast(0.8) brightness(0.8)',
                   left: `${(-100 + sliderPosition) * (100 / sliderPosition)}%`
                 }}
