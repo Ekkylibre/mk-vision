@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Play } from 'lucide-react';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -53,11 +54,10 @@ export default function Portfolio() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                selectedCategory === category
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${selectedCategory === category
                   ? 'bg-white text-black'
                   : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
+                }`}
             >
               {category}
             </button>
@@ -71,10 +71,11 @@ export default function Portfolio() {
               key={project.id}
               className="group relative aspect-video overflow-hidden rounded-lg bg-gray-900"
             >
-              <img
+              <Image
                 src={project.thumbnail}
                 alt={project.title}
                 className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                style={{ width: "auto", height: "auto" }}
               />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
                 <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>

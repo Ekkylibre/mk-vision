@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Services() {
   const services = [
     {
@@ -38,10 +40,11 @@ export default function Services() {
               key={index}
               className="group relative overflow-hidden rounded-lg aspect-video"
             >
-              <img
+              <Image
                 src={service.image}
                 alt={service.title}
                 className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                style={{ width: "auto", height: "auto" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/0 flex flex-col justify-end p-8">
                 <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>

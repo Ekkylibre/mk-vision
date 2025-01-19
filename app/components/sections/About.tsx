@@ -1,13 +1,18 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section id="about" className="bg-black py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative h-[600px] rounded-lg overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1601506521793-dc748fc80b67?auto=format&fit=crop&q=80"
-              alt="James Miller"
-              className="object-cover w-full h-full"
+            <Image
+              src="/makey-profile.jpg"
+              alt="Makey Siong"
+              className="object-cover"
+              style={{ width: '100%', height: '100%' }}
+              priority
+              fill
             />
           </div>
           <div className="space-y-8">
