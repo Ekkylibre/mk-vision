@@ -7,73 +7,32 @@ export const NAVIGATION_ITEMS = [
 
 export const PORTFOLIO_ITEMS = [
   {
-    id: 'mountains-echo',
-    title: "Mountain's Echo",
+    id: 'phong-thao',
+    title: "JE SUIS JJB - Phong Thao",
     category: "Short Film",
-    thumbnail: "https://images.unsplash.com/photo-1533000759938-aa0ba70beceb?auto=format&fit=crop&q=80",
-    videos: [
-      { id: 'dQw4w9WgXcQ', title: 'Behind the Scenes' },
-      { id: 'ScMzIvxBSi4', title: 'Main Film' },
-      { id: '6stlCkUDG_s', title: 'Director\'s Cut' }
-    ]
+    thumbnail: "https://img.youtube.com/vi/1U4eCZLyEHY/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=1U4eCZLyEHY&t=69s",
   },
   {
-    id: 'urban-rhythms',
-    title: "Urban Rhythms",
+    id: 'interview-kenou',
+    title: "Interview Kenou",
     category: "Music Video",
-    thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80",
-    videos: [
-      { id: 'dQw4w9WgXcQ', title: 'Music Video' },
-      { id: 'ScMzIvxBSi4', title: 'Making Of' }
-    ]
+    thumbnail: "https://img.youtube.com/vi/vTl9nyrggYY/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=vTl9nyrggYY&t=1s",
   },
   {
-    id: 'waves-change',
-    title: "Waves of Change",
+    id: 'qui-je-suis-?',
+    title: "Qui je suis ?",
     category: "Documentary",
-    thumbnail: "https://images.unsplash.com/photo-1551373884-8a0750074df7?auto=format&fit=crop&q=80",
-    videos: [
-      { id: 'dQw4w9WgXcQ', title: 'Part 1' },
-      { id: 'ScMzIvxBSi4', title: 'Part 2' },
-      { id: '6stlCkUDG_s', title: 'Extended Interviews' }
-    ]
+    thumbnail: "https://img.youtube.com/vi/GbA9Eb1D6qU/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=GbA9Eb1D6qU&t=196s",
   },
   {
-    id: 'brand-vision',
-    title: "Brand Vision",
+    id: 'aprilia-rsv4',
+    title: "Aprilia RSV4 - Cinematic Video",
     category: "Commercial",
-    thumbnail: "https://images.unsplash.com/photo-1559570278-eb8d71d06403?auto=format&fit=crop&q=80",
-    videos: [
-      { id: 'dQw4w9WgXcQ', title: 'TV Spot' },
-      { id: 'ScMzIvxBSi4', title: 'Extended Cut' }
-    ]
-  }
-] as const;
-
-export const SERVICES = [
-  {
-    id: 'film-production',
-    title: "Film Production",
-    description: "From concept to final cut, we bring your story to life with professional film production services.",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"
-  },
-  {
-    id: 'commercial-videos',
-    title: "Commercial Videos",
-    description: "Elevate your brand with compelling commercial content that resonates with your audience.",
-    image: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&q=80"
-  },
-  {
-    id: 'music-videos',
-    title: "Music Videos",
-    description: "Creative music video production that captures the essence of your musical vision.",
-    image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80"
-  },
-  {
-    id: 'documentary',
-    title: "Documentary",
-    description: "Authentic storytelling that brings real stories to life through documentary filmmaking.",
-    image: "https://images.unsplash.com/photo-1517799094725-e3453440724e?auto=format&fit=crop&q=80"
+    thumbnail: "https://img.youtube.com/vi/0e7AgX3griQ/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=0e7AgX3griQ",
   }
 ] as const;
 

@@ -9,6 +9,11 @@ interface VideoCarouselProps {
   onClose: () => void;
 }
 
+const extractVideoId = (url: string) => {
+  const match = url.match(/(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+};
+
 export default function VideoCarousel({ initialProjectId, onClose }: VideoCarouselProps) {
   const [currentProjectId, setCurrentProjectId] = useState(initialProjectId);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -48,6 +53,8 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
     setCurrentProjectId(PORTFOLIO_ITEMS[previousIndex].id);
   };
 
+  const videoId = extractVideoId(currentProject.videoUrl);
+
   return (
     <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
       <div ref={modalRef} className="relative w-full max-w-6xl mx-4">
@@ -67,13 +74,17 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
 
         {/* Video Container */}
         <div className="relative aspect-video bg-black">
-          <iframe
-            src={`https://www.youtube.com/embed/${currentProject.videos[0].id}?autoplay=1`}
-            title={currentProject.title}
-            className="absolute inset-0 w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          {videoId ? (
+            <iframe
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+              title={currentProject.title}
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <p>Vidéo non disponible</p>
+          )}
         </div>
 
         {/* Navigation */}
