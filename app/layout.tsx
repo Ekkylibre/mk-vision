@@ -4,31 +4,59 @@ import { Inter } from 'next/font/google';
 import RootLayoutClient from './RootLayoutClient';
 import Script from 'next/script';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true
+});
 
 export const metadata: Metadata = {
-  title: 'Makey Siong | Filmmaker & Cinematographer',
-  description: 'Cinéaste et directeur de la photographie professionnel basé à Paris. Spécialisé dans la production de films, documentaires et contenus commerciaux.',
-  keywords: ['filmmaker', 'cinematographer', 'réalisateur', 'directeur photo', 'production vidéo', 'film', 'documentaire'],
-  authors: [{ name: 'Makey Siong' }],
-  creator: 'Makey Siong',
+  metadataBase: new URL('https://www.makeyvision.com/'),
+  title: 'Makey Siong | Réalisateur & Directeur de la Photographie',
+  description: 'Réalisateur créatif spécialisé dans la production de films, documentaires et contenus audiovisuels innovants. De la conception à la réalisation, donnez vie à votre vision avec une narration visuelle unique et impactante.',
+  keywords: [
+    'réalisateur',
+    'filmmaker',
+    'vidéaste',
+    'videographer',
+    'directeur photo',
+    'cinematographer',
+    'production vidéo',
+    'réalisation film',
+    'film maker',
+    'video maker',
+    'paris',
+    'france'
+  ],
+  authors: [
+    { name: 'Makey Siong', url: 'https://www.makeyvision.com' },
+    { name: 'Dany Xiong', url: 'https://portfolio-project-glougsyiv-danys-projects-420b837d.vercel.app/' }
+  ],
+  creator: 'Dany Xiong',
   publisher: 'Makey Siong',
+  alternates: {
+    canonical: 'https://www.makeyvision.com',
+    languages: {
+      'fr-FR': 'https://www.makeyvision.com',
+      'en-US': 'https://www.makeyvision.com/en'
+    }
+  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'Makey Siong | Filmmaker & Cinematographer',
-    description: 'Cinéaste et directeur de la photographie professionnel basé à Paris. Spécialisé dans la production de films, documentaires et contenus commerciaux.',
-    url: 'https://makeysiong.com',
+    title: 'Makey Siong | Réalisateur & Directeur de la Photographie',
+    description: 'Réalisateur créatif spécialisé dans la production de films, documentaires et contenus audiovisuels innovants. De la conception à la réalisation, donnez vie à votre vision avec une narration visuelle unique et impactante.',
+    url: 'https://www.makeyvision.com',
     siteName: 'Makey Siong',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1601506521793-dc748fc80b67',
+        url: '/makey-profile.jpg',
         width: 1200,
         height: 630,
-        alt: 'Makey Siong - Filmmaker & Cinematographer',
+        alt: 'Makey Siong - Réalisateur & Directeur de la Photographie',
       },
     ],
     locale: 'fr_FR',
@@ -36,10 +64,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Makey Siong | Filmmaker & Cinematographer',
-    description: 'Cinéaste et directeur de la photographie professionnel basé à Paris. Spécialisé dans la production de films, documentaires et contenus commerciaux.',
-    images: ['https://images.unsplash.com/photo-1601506521793-dc748fc80b67'],
+    title: 'Makey Siong | Réalisateur & Directeur de la Photographie',
+    description: 'Réalisateur créatif spécialisé dans la production de films, documentaires et contenus audiovisuels innovants. De la conception à la réalisation, donnez vie à votre vision avec une narration visuelle unique et impactante.',
+    images: ['/makey-profile.jpg'],
     creator: '@makeysiong',
+    site: '@makeysiong',
   },
   robots: {
     index: true,
@@ -62,9 +91,11 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <link rel="canonical" href="https://makeysiong.com" />
-        {/* Favicon */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://www.makeyvision.com" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className={inter.className}>
         <RootLayoutClient>{children}</RootLayoutClient>
