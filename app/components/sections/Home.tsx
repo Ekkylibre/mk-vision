@@ -26,7 +26,7 @@ export default function Home() {
             src="/filmmaker-showreel.mp4"
             type="video/mp4"
           />
-          <track 
+          <track
             kind="captions"
             src="/captions/home-video.vtt"
             srcLang="fr"
@@ -38,28 +38,15 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-4">
         <div
-          className={`transform transition-all duration-1000 ${
-            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }`}
+          className={`transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+            }`}
         >
           <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center">
             MAKEY SIONG
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-8 text-center tracking-wider">
-            REALISATEUR & CINEMATOGRAPHER
+            VIDEASTE / REALISATEUR
           </p>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          aria-hidden="true"
-        >
-          <div className="animate-bounce">
-            <div className="w-1 h-12 rounded-full bg-white/30 relative">
-              <div className="absolute top-0 left-0 w-full h-1/3 bg-white rounded-full animate-scroll" />
-            </div>
-          </div>
         </div>
       </div>
     </section>

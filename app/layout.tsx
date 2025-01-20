@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.makeyvision.com/'),
-  title: 'Makey Siong | Réalisateur & Cinematographer',
+  title: 'Makey Siong | Vidéaste & Réalisateur',
   description: 'Réalisateur créatif spécialisé dans la production de films, documentaires et contenus audiovisuels innovants. De la conception à la réalisation, donnez vie à votre vision avec une narration visuelle unique et impactante.',
   keywords: [
     'réalisateur',
@@ -26,7 +26,18 @@ export const metadata: Metadata = {
     'film maker',
     'video maker',
     'paris',
-    'france'
+    'france',
+    'makey siong',
+    'film',
+    'documentaire',
+    'corporate',
+    'production vidéo',
+    'film corporate',
+    'vidéo professionnel',
+    'réalisation documentaire',
+    'projets créatifs',
+    'Brétigny sur Orge',
+    'Essonne',
   ],
   authors: [
     { name: 'Makey Siong', url: 'https://www.makeyvision.com' },
@@ -47,8 +58,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: 'Makey Siong | Réalisateur & Directeur de la Photographie',
-    description: 'Réalisateur créatif spécialisé dans la production de films, documentaires et contenus audiovisuels innovants. De la conception à la réalisation, donnez vie à votre vision avec une narration visuelle unique et impactante.',
+    title: 'Makey Siong | Vidéaste & Réalisateur',
+    description: 'Découvrez les projets de Makey Siong, vidéaste et réalisateur basé à Brétigny-sur-Orge, Essonne, spécialisé dans le film et le documentaire corporate, offrant des vidéos créatives et de qualité.',
     url: 'https://www.makeyvision.com',
     siteName: 'Makey Siong',
     images: [
@@ -65,7 +76,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Makey Siong | Réalisateur & Filmmaker',
-    description: 'Réalisateur créatif spécialisé dans la production de films, documentaires et contenus audiovisuels innovants. De la conception à la réalisation, donnez vie à votre vision avec une narration visuelle unique et impactante.',
+    description: 'Découvrez les projets de Makey Siong, vidéaste et réalisateur basé à Brétigny-sur-Orge, Essonne, spécialisé dans le film et le documentaire corporate, offrant des vidéos créatives et de qualité.',
     images: ['/makey-profile.jpg'],
     creator: '@makeysiong',
     site: '@makeysiong',
