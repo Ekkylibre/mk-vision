@@ -48,18 +48,23 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
     setCurrentProjectId(PORTFOLIO_ITEMS[previousIndex].id);
   };
 
+  // Fonction pour extraire l'ID de la vidéo de l'URL
+  const getYouTubeVideoId = (url: string) => {
+    const regex = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|\S*\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  };
+
   return (
     <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
       <div ref={modalRef} className="relative w-full max-w-6xl mx-4">
         {/* Header avec titre et bouton fermer */}
         <div className="absolute -top-12 left-0 right-0 flex justify-between items-center">
-          {/* Conteneur du titre avec overflow */}
           <div className="flex-1 min-w-0 pr-4">
             <h3 className="text-2xl font-bold text-white truncate">
               {currentProject.title}
             </h3>
           </div>
-          {/* Bouton fermer */}
           <button
             onClick={onClose}
             className="flex-shrink-0 text-white hover:text-gray-300 transition-colors"
@@ -71,13 +76,14 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
 
         {/* Video Container */}
         <div className="relative aspect-video bg-black">
-          {currentProject.videos && currentProject.videos[0] && (
+          {currentProject.videoUrl && (
             <iframe
-              src={`https://www.youtube.com/embed/${currentProject.videos[0].id}?autoplay=1`}
+              src={`https://www.youtube.com/embed/${getYouTubeVideoId(currentProject.videoUrl)}?autoplay=1`}
               title={currentProject.title}
               className="absolute inset-0 w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              aria-label={currentProject.title}
             />
           )}
         </div>

@@ -74,7 +74,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Makey Siong. Tous droits réservés.
+            © {new Date().getFullYear()} Dany XIONG. Tous droits réservés.
           </div>
         </div>
       </div>

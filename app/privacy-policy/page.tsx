@@ -26,43 +26,61 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">1. Collecte des informations</h2>
             <p className="text-gray-300">
-              Nous recueillons des informations lorsque vous vous inscrivez sur notre site, lorsque vous vous connectez à votre compte, faites un achat, participez à un concours, et/ou lorsque vous vous déconnectez. Les informations recueillies incluent votre nom, votre adresse e-mail, numéro de téléphone, et/ou carte de crédit.
+              Nous collectons uniquement les informations que vous nous fournissez volontairement via le formulaire de contact, à savoir :
             </p>
+            <ul className="list-disc list-inside text-gray-300 mt-2">
+              <li>Votre nom</li>
+              <li>Votre adresse e-mail</li>
+              <li>Le contenu de votre message</li>
+            </ul>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">2. Utilisation des informations</h2>
             <p className="text-gray-300">
-              Toutes les informations que nous recueillons auprès de vous peuvent être utilisées pour :
+              Les informations que vous nous transmettez via le formulaire de contact sont utilisées exclusivement pour :
             </p>
             <ul className="list-disc list-inside text-gray-300 mt-2">
-              <li>Personnaliser votre expérience et répondre à vos besoins individuels</li>
-              <li>Fournir un contenu publicitaire personnalisé</li>
-              <li>Améliorer notre site Web</li>
-              <li>Améliorer le service client et vos besoins de prise en charge</li>
-              <li>Vous contacter par e-mail</li>
-              <li>Administrer un concours, une promotion, ou une enquête</li>
+              <li>Répondre à votre demande de contact</li>
+              <li>Vous fournir les informations demandées</li>
+              <li>Communiquer avec vous concernant nos services</li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">3. Confidentialité du commerce en ligne</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">3. Conservation des données</h2>
             <p className="text-gray-300">
-              Nous sommes les seuls propriétaires des informations recueillies sur ce site. Vos informations personnelles ne seront pas vendues, échangées, transférées, ou données à une autre société pour n'importe quelle raison, sans votre consentement.
+              Les informations de contact sont conservées uniquement le temps nécessaire au traitement de votre demande. Elles sont ensuite supprimées de nos systèmes, sauf si vous nous donnez explicitement votre accord pour les conserver plus longtemps.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">4. Divulgation à des tiers</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">4. Protection des informations</h2>
             <p className="text-gray-300">
-              Nous ne vendons, n'échangeons et ne transférons pas vos informations personnelles identifiables à des tiers. Cela ne comprend pas les tierces parties de confiance qui nous aident à exploiter notre site Web ou à mener nos affaires, tant que ces parties conviennent de garder ces informations confidentielles.
+              Nous prenons la protection de vos données personnelles très au sérieux. Le formulaire de contact utilise une connexion sécurisée (HTTPS) pour la transmission de vos informations. Vos données sont stockées de manière sécurisée et ne sont accessibles qu'aux personnes autorisées.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">5. Protection des informations</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">5. Vos droits</h2>
             <p className="text-gray-300">
-              Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. Nous utilisons un cryptage à la pointe de la technologie pour protéger les informations sensibles transmises en ligne. Nous protégeons également vos informations hors ligne.
+              Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données personnelles :
+            </p>
+            <ul className="list-disc list-inside text-gray-300 mt-2">
+              <li>Droit d'accès à vos données</li>
+              <li>Droit de rectification de vos données</li>
+              <li>Droit à l'effacement de vos données</li>
+              <li>Droit d'opposition au traitement de vos données</li>
+            </ul>
+            <p className="text-gray-300 mt-4">
+              Pour exercer ces droits ou pour toute question concernant le traitement de vos données personnelles, vous pouvez nous contacter via le formulaire de contact du site.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-4">6. Mise à jour</h2>
+            <p className="text-gray-300">
+              Cette politique de confidentialité peut être mise à jour occasionnellement. La dernière mise à jour a été effectuée le {new Date().toLocaleDateString('fr-FR')}.
             </p>
           </section>
         </div>
