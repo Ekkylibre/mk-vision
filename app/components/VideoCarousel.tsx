@@ -106,14 +106,9 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
           </button>
         </div>
 
-        {/* Project Info and Counter */}
-        <div className="absolute -bottom-12 left-0 right-0 text-white flex justify-between items-center">
-          <div className="flex-1 min-w-0">
-            <p className="text-lg font-medium truncate">
-              {currentProject.category}
-            </p>
-          </div>
-          <p className="flex-shrink-0 text-sm ml-4">
+        {/* Project Counter */}
+        <div className="absolute -bottom-12 right-0 text-white">
+          <p className="text-sm">
             {currentProjectIndex + 1} / {PORTFOLIO_ITEMS.length}
           </p>
         </div>
