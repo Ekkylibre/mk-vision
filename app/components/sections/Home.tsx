@@ -10,7 +10,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section className="relative min-h-screen" id="home" aria-label="Accueil">
+    <section className="relative min-h-screen bg-black" id="home" aria-label="Accueil">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden" aria-hidden="true">
         <div className="absolute inset-0 bg-black/60 z-10" />
@@ -19,8 +19,7 @@ export default function Home() {
           muted
           loop
           playsInline
-          className="object-cover w-full h-full"
-          poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80"
+          className="object-cover w-full h-full opacity-80"
           aria-label="Vidéo de présentation"
         >
           <source
