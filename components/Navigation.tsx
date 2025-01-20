@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_ITEMS } from '@/app/constants';
+import Image from 'next/image';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,9 +35,8 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -44,7 +44,14 @@ export default function Navigation() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="text-white font-bold text-xl tracking-wider"
           >
-            MK
+            <Image
+              src="/favicon.ico"
+              alt="Logo"
+              width={50}
+              height={50}
+              quality={100}
+              style={{ objectFit: 'contain' }}
+            />
           </button>
 
           {/* Desktop Navigation */}
@@ -78,22 +85,20 @@ export default function Navigation() {
 
         {/* Mobile Navigation Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen
               ? 'max-h-64 opacity-100'
               : 'max-h-0 opacity-0'
-          }`}
+            }`}
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 transform transition-transform duration-300">
             {NAVIGATION_ITEMS.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => item.id === 'home' ? window.scrollTo({ top: 0, behavior: 'smooth' }) : scrollToSection(item.id)}
-                className={`text-gray-300 hover:text-white block px-3 py-2 text-base w-full text-left transform transition-all duration-300 ${
-                  isMenuOpen
+                className={`text-gray-300 hover:text-white block px-3 py-2 text-base w-full text-left transform transition-all duration-300 ${isMenuOpen
                     ? 'translate-x-0 opacity-100'
                     : 'translate-x-4 opacity-0'
-                }`}
+                  }`}
                 style={{
                   transitionDelay: `${index * 50}ms`
                 }}
