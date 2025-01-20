@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Play } from 'lucide-react';
 import { PORTFOLIO_ITEMS } from '@/app/constants';
 import VideoCarousel from '@/app/components/VideoCarousel';
-import Image from 'next/image';
 
 interface VideoModalState {
   isOpen: boolean;
@@ -18,6 +17,9 @@ export default function Portfolio() {
     isOpen: false,
     projectId: null,
   });
+
+  const beforeVideoRef = useRef<HTMLVideoElement>(null);
+  const afterVideoRef = useRef<HTMLVideoElement>(null);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -50,6 +52,32 @@ export default function Portfolio() {
     setVideoModal({ isOpen: false, projectId: null });
   };
 
+  // Synchronisation des vidéos
+  useEffect(() => {
+    const beforeVideo = beforeVideoRef.current;
+    const afterVideo = afterVideoRef.current;
+
+    if (!beforeVideo || !afterVideo) return;
+
+    const syncVideos = () => {
+      if (Math.abs(beforeVideo.currentTime - afterVideo.currentTime) > 0.1) {
+        afterVideo.currentTime = beforeVideo.currentTime;
+      }
+    };
+
+    beforeVideo.addEventListener('play', syncVideos);
+    beforeVideo.addEventListener('seeking', syncVideos);
+    
+    // Synchronisation toutes les secondes pour garantir
+    const syncInterval = setInterval(syncVideos, 1000);
+
+    return () => {
+      beforeVideo.removeEventListener('play', syncVideos);
+      beforeVideo.removeEventListener('seeking', syncVideos);
+      clearInterval(syncInterval);
+    };
+  }, []);
+
   useEffect(() => {
     window.addEventListener('mouseup', handleMouseUp);
     return () => {
@@ -67,15 +95,12 @@ export default function Portfolio() {
               key={project.id}
               className="group relative aspect-video overflow-hidden rounded-lg bg-gray-900"
             >
-              <Image
+              <img
                 src={project.thumbnail}
                 alt={`Aperçu du projet ${project.title}`}
-                width={500}
-                height={300}
                 className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                priority
               />
-              <div
+              <div 
                 className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center"
               >
                 <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
@@ -105,43 +130,47 @@ export default function Portfolio() {
         {/* Before/After Comparison */}
         <div className="mt-16">
           <h3 className="text-2xl font-bold text-white mb-8">Avant / Après</h3>
-          <div
+          <div 
             className="relative aspect-video rounded-lg overflow-hidden cursor-ew-resize"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
           >
-            {/* After Video (Base layer) */}
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source
-                src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-9113-large.mp4"
-                type="video/mp4"
-              />
-            </video>
-
-            {/* Before Video (Overlay) */}
-            <div
-              className="absolute inset-0 overflow-hidden"
-              style={{ width: `${sliderPosition}%` }}
-            >
+            {/* Version "Après" (Base layer) */}
+            <div className="absolute inset-0">
               <video
+                ref={afterVideoRef}
                 autoPlay
                 muted
                 loop
                 playsInline
-                className="absolute inset-0 w-[100vw] max-w-none h-full object-cover"
-                style={{
-                  filter: 'grayscale(1) contrast(0.8) brightness(0.8)',
-                  left: `${(-100 + sliderPosition) * (100 / sliderPosition)}%`
-                }}
+                className="w-full h-full object-cover"
+                preload="auto"
               >
                 <source
-                  src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-9113-large.mp4"
+                  src="/final-cut.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+            
+            {/* Version "Avant" (Overlay avec clip-path) */}
+            <div
+              className="absolute inset-0"
+              style={{
+                clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
+              }}
+            >
+              <video
+                ref={beforeVideoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+                preload="auto"
+              >
+                <source
+                  src="/raw-version.mp4"
                   type="video/mp4"
                 />
               </video>
