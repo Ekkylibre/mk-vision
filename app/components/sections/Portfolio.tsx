@@ -106,12 +106,11 @@ export default function Portfolio() {
               <div
                 className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center"
               >
-                <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300">{project.category}</p>
+                <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
                 <button
                   onClick={() => openVideoModal(project.id)}
                   onKeyDown={(e) => handleKeyDown(e, project.id)}
-                  className="mt-4 flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full backdrop-blur-sm transition-all duration-300"
+                  className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full backdrop-blur-sm transition-all duration-300"
                   aria-label={`Regarder le projet ${project.title}`}
                 >
                   <Play className="w-5 h-5" />
