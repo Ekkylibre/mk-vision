@@ -44,7 +44,7 @@ export default function Navigation() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="text-white font-bold text-xl tracking-wider"
           >
-            JM
+            MK
           </button>
 
           {/* Desktop Navigation */}
