@@ -24,40 +24,58 @@ export default function LegalNotice() {
         
         <div className="prose prose-invert">
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">1. Informations légales</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">1. Éditeur du site</h2>
             <p className="text-gray-300">
-              Le site web jamesmiller.com est édité par James Miller, entrepreneur individuel.
+              Le site makeysiong.com est édité par :
               <br />
-              Siège social : [Adresse]
+              Dany Xiong
               <br />
-              Email : contact@jamesmiller.com
+              Développeur Web
               <br />
-              Téléphone : +1 (555) 123-4567
+              Email : dany.xiong.dev@outlook.fr
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">2. Hébergement</h2>
             <p className="text-gray-300">
-              Ce site est hébergé par [Nom de l'hébergeur]
+              Ce site est hébergé par Vercel Inc.
               <br />
-              Adresse : [Adresse de l'hébergeur]
+              340 S Lemon Ave #4133
               <br />
-              Téléphone : [Numéro de téléphone]
+              Walnut, CA 91789
+              <br />
+              États-Unis
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">3. Propriété intellectuelle</h2>
             <p className="text-gray-300">
-              L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
+              L'ensemble des éléments présents sur ce site (textes, images, vidéos, logo, etc.) sont protégés par les lois relatives à la propriété intellectuelle. Toute reproduction ou représentation, intégrale ou partielle, par quelque procédé que ce soit, faite sans le consentement préalable et écrit de Makey SIONG est illicite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">4. Responsabilité</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">4. Protection des données personnelles</h2>
             <p className="text-gray-300">
-              Les informations contenues sur ce site sont aussi précises que possible et le site est périodiquement remis à jour, mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes. Si vous constatez une erreur ou ce qui peut être un dysfonctionnement, merci de bien vouloir le signaler par email.
+              Les informations recueillies via le formulaire de contact sont destinées à Makey SIONG pour la seule finalité de répondre à vos demandes. Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, vous pouvez nous contacter via le formulaire de contact du site.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold text-white mb-4">5. Crédits</h2>
+            <p className="text-gray-300">
+              Photographies et vidéos : © Makey SIONG
+              <br />
+              Conception et développement : Dany XIONG
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-4">6. Mise à jour</h2>
+            <p className="text-gray-300">
+              Les présentes mentions légales peuvent être modifiées à tout moment. Dernière mise à jour le {new Date().toLocaleDateString('fr-FR')}.
             </p>
           </section>
         </div>
