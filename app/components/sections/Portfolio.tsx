@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Play } from 'lucide-react';
 import { PORTFOLIO_ITEMS } from '@/app/constants';
 import VideoCarousel from '@/app/components/VideoCarousel';
+import Image from 'next/image';
 
 interface VideoModalState {
   isOpen: boolean;
@@ -67,7 +68,7 @@ export default function Portfolio() {
 
     beforeVideo.addEventListener('play', syncVideos);
     beforeVideo.addEventListener('seeking', syncVideos);
-    
+
     // Synchronisation toutes les secondes pour garantir
     const syncInterval = setInterval(syncVideos, 1000);
 
@@ -95,12 +96,14 @@ export default function Portfolio() {
               key={project.id}
               className="group relative aspect-video overflow-hidden rounded-lg bg-gray-900"
             >
-              <img
+              <Image
                 src={project.thumbnail}
                 alt={`Aperçu du projet ${project.title}`}
+                width={800}
+                height={450}
                 className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
               />
-              <div 
+              <div
                 className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center"
               >
                 <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
@@ -130,7 +133,7 @@ export default function Portfolio() {
         {/* Before/After Comparison */}
         <div className="mt-16">
           <h3 className="text-2xl font-bold text-white mb-8">Avant / Après</h3>
-          <div 
+          <div
             className="relative aspect-video rounded-lg overflow-hidden cursor-ew-resize"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
@@ -152,7 +155,7 @@ export default function Portfolio() {
                 />
               </video>
             </div>
-            
+
             {/* Version "Avant" (Overlay avec clip-path) */}
             <div
               className="absolute inset-0"
