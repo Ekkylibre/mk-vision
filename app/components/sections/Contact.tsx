@@ -20,26 +20,25 @@ export default function Contact() {
 
   const validateField = (name: keyof FormData, value: string) => {
     try {
-      contactFormSchema.shape[name].parse(value);
-      const newErrors = { ...errors };
-      delete newErrors[name];
-      setErrors(newErrors);
-      return true;
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        setErrors(prev => ({ ...prev, [name]: error.errors[0].message }));
+      const result = contactFormSchema.shape[name].safeParse(value);
+      if (result.success) {
+        const newErrors = { ...errors };
+        delete newErrors[name];
+        setErrors(newErrors);
+        return true;
+      } else {
+        setErrors(prev => ({ ...prev, [name]: result.error.errors[0].message }));
+        return false;
       }
+    } catch {
+      setErrors(prev => ({ ...prev, [name]: "Erreur de validation" }));
       return false;
     }
   };
 
   const isFormValid = () => {
-    try {
-      contactFormSchema.parse(formData);
-      return true;
-    } catch {
-      return false;
-    }
+    const result = contactFormSchema.safeParse(formData);
+    return result.success;
   };
 
   const handleChange = (
