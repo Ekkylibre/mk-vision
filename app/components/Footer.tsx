@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Social Links */}
           <div className="flex space-x-6">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/mksg0411/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -19,7 +19,7 @@ export default function Footer() {
               <Instagram className="w-6 h-6" />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/people/Makey-Siong/pfbid01EiFLkLiQHMv2MRTaB1dVjR6JmDogYCfF5YjWBF5UAejRM53xn1hK5tys4kacw9ol/?locale=fr_FR://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -28,7 +28,7 @@ export default function Footer() {
               <Facebook className="w-6 h-6" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/makey-siong-071924287/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -37,7 +37,7 @@ export default function Footer() {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="https://tiktok.com"
+              href="https://www.tiktok.com/@makey_sg04?referer_url=localhost%3A3000%2F&refer=embed&embed_source=121374463%2C121468991%2C121439635%2C121433650%2C121404358%2C121351166%2C121331973%2C120811592%2C120810756%3Bnull%3Bembed_masking&referer_video_id=7384837467305790753"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -46,7 +46,7 @@ export default function Footer() {
               <Music2 className="w-6 h-6" />
             </a>
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@makeysiong"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors duration-300"
