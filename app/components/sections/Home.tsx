@@ -47,7 +47,7 @@ export default function Home() {
             MAKEY SIONG
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-8 text-center tracking-wider">
-            FILMMAKER & CINEMATOGRAPHER
+            REALISATEUR & CINEMATOGRAPHER
           </p>
         </div>
 
