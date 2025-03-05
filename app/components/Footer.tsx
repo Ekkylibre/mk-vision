@@ -1,6 +1,6 @@
 'use client';
 
-import { Instagram, Facebook, Linkedin, Youtube, Music2 } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, Youtube, Music2, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -9,6 +9,12 @@ export default function Footer() {
         <div className="flex flex-col items-center space-y-8">
           {/* Social Links */}
           <div className="flex space-x-6">
+            <a
+            href="mailto:mk.vision@hotmail.com"
+            className="text-gray-400 hover:text-white transition-colors duration-300"
+            target='_blank'>
+              <Mail className="w-6 h-6" />
+            </a>
             <a
               href="https://www.instagram.com/mksg0411/"
               target="_blank"
