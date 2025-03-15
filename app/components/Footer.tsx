@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Social Links */}
           <div className="flex space-x-6">
             <a
-            href="mailto:mk.vision@hotmail.com"
+            href="mailto:makey-sg@makeyvision.com"
             className="text-gray-400 hover:text-white transition-colors duration-300"
             target='_blank'>
               <Mail className="w-6 h-6" />

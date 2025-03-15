@@ -13,7 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.makeyvision.com/'),
   title: 'Makey Siong | Vidéaste & Réalisateur',
-  description: 'Réalisateur créatif spécialisé dans la production de films, documentaires et contenus audiovisuels innovants. De la conception à la réalisation, donnez vie à votre vision avec une narration visuelle unique et impactante.',
+  description: 'Vidéaste / Réalisateur spécialisé dans le développement et communication de marques. J’aide les marques à augmenter leurs impacts sur internet on transmettre des messages forts à un public cible.',
   keywords: [
     'réalisateur',
     'filmmaker',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   ],
   authors: [
     { name: 'Makey Siong', url: 'https://www.makeyvision.com' },
-    { name: 'Dany Xiong', url: 'https://portfolio-project-glougsyiv-danys-projects-420b837d.vercel.app/' }
+    { name: 'Dany Xiong', url: 'https://portfolio-dany-xiong-dev.vercel.app/' }
   ],
   creator: 'Dany Xiong',
   publisher: 'Makey Siong',

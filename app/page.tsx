@@ -5,6 +5,7 @@ import Portfolio from '@/app/components/sections/Portfolio';
 import About from '@/app/components/sections/About';
 import Contact from '@/app/components/sections/Contact';
 import Footer from '@/app/components/Footer';
+import TrustedBy from './components/sections/TrustedBy';
 
 export default function Page() {
   return (
@@ -12,6 +13,7 @@ export default function Page() {
       <Home />
       <Portfolio />
       <About />
+      <TrustedBy />
       <Contact />
       <Footer />
     </>
