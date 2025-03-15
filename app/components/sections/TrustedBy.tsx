@@ -26,7 +26,7 @@ export default function TrustedBy() {
   return (
     <section className="bg-black py-16" id="trusted-by">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-medium text-gray-400 mb-12 text-center">
+        <h2 className="text-3xl font-medium mb-12 text-center">
           Ils m’ont fait confiance
         </h2>
         
