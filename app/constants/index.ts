@@ -19,11 +19,11 @@ export const PORTFOLIO_ITEMS = [
     videoUrl: "https://www.youtube.com/watch?v=vTl9nyrggYY&t=1s",
   },
   {
-    id: 'qui-je-suis-?',
-    title: "Qui je suis ?",
-    thumbnail: "https://img.youtube.com/vi/GbA9Eb1D6qU/maxresdefault.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=GbA9Eb1D6qU&t=196s",
-  },
+    id: 'luci-la-grappleuse',
+    title: "LUCIE La Grappleuse",
+    thumbnail: "https://img.youtube.com/vi/-okndDMdOk0/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=-okndDMdOk0",
+  },  
   {
     id: 'aprilia-rsv4',
     title: "Aprilia RSV4 - Cinematic Video",
