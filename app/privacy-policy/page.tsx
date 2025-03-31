@@ -57,7 +57,7 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">4. Protection des informations</h2>
             <p className="text-gray-300">
-              Nous prenons la protection de vos données personnelles très au sérieux. Le formulaire de contact utilise une connexion sécurisée (HTTPS) pour la transmission de vos informations. Vos données sont stockées de manière sécurisée et ne sont accessibles qu'aux personnes autorisées.
+              Nous prenons la protection de vos données personnelles très au sérieux. Le formulaire de contact utilise une connexion sécurisée (HTTPS) pour la transmission de vos informations. Vos données sont stockées de manière sécurisée et ne sont accessibles qu&apos;aux personnes autorisées.
             </p>
           </section>
 
@@ -67,10 +67,10 @@ export default function PrivacyPolicy() {
               Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données personnelles :
             </p>
             <ul className="list-disc list-inside text-gray-300 mt-2">
-              <li>Droit d'accès à vos données</li>
+              <li>Droit d&apos;accès à vos données</li>
               <li>Droit de rectification de vos données</li>
-              <li>Droit à l'effacement de vos données</li>
-              <li>Droit d'opposition au traitement de vos données</li>
+              <li>Droit à l&apos;effacement de vos données</li>
+              <li>Droit d&apos;opposition au traitement de vos données</li>
             </ul>
             <p className="text-gray-300 mt-4">
               Pour exercer ces droits ou pour toute question concernant le traitement de vos données personnelles, vous pouvez nous contacter via le formulaire de contact du site.

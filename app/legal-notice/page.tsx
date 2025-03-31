@@ -52,14 +52,14 @@ export default function LegalNotice() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">3. Propriété intellectuelle</h2>
             <p className="text-gray-300">
-              L'ensemble des éléments présents sur ce site (textes, images, vidéos, logo, etc.) sont protégés par les lois relatives à la propriété intellectuelle. Toute reproduction ou représentation, intégrale ou partielle, par quelque procédé que ce soit, faite sans le consentement préalable et écrit de Makey SIONG est illicite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.
+              L&apos;ensemble des éléments présents sur ce site (textes, images, vidéos, logo, etc.) sont protégés par les lois relatives à la propriété intellectuelle. Toute reproduction ou représentation, intégrale ou partielle, par quelque procédé que ce soit, faite sans le consentement préalable et écrit de Makey SIONG est illicite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">4. Protection des données personnelles</h2>
             <p className="text-gray-300">
-              Les informations recueillies via le formulaire de contact sont destinées à Makey SIONG pour la seule finalité de répondre à vos demandes. Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, vous pouvez nous contacter via le formulaire de contact du site.
+              Les informations recueillies via le formulaire de contact sont destinées à Makey SIONG pour la seule finalité de répondre à vos demandes. Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression de vos données. Pour exercer ces droits, vous pouvez nous contacter via le formulaire de contact du site.
             </p>
           </section>
 
