@@ -12,7 +12,8 @@ export default function Footer() {
             <a
             href="mailto:makey-sg@makeyvision.com"
             className="text-gray-400 hover:text-white transition-colors duration-300"
-            target='_blank'>
+            target='_blank'
+            aria-label="Envoyer un email à Makey Siong">
               <Mail className="w-6 h-6" />
             </a>
             <a
