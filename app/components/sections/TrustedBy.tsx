@@ -26,10 +26,10 @@ export default function TrustedBy() {
   return (
     <section className="bg-black py-16" id="trusted-by">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-medium mb-12 text-center">
+        <h3 className="text-3xl font-bold text-white text-center mb-8">
           Ils m’ont fait confiance
-        </h2>
-        
+        </h3>
+
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
           {clients.map((client, index) => (
             <motion.div
