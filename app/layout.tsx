@@ -31,7 +31,6 @@ export const metadata: Metadata = {
     'film',
     'documentaire',
     'corporate',
-    'production vidéo',
     'film corporate',
     'vidéo professionnel',
     'réalisation documentaire',
