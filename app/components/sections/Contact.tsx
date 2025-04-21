@@ -1,65 +1,69 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 import { toast } from 'sonner';
-import { z } from 'zod';
 import emailjs from '@emailjs/browser';
-import { contactFormSchema } from '@/app/lib/validations/contact';
-
-type FormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const validateField = (name: keyof FormData, value: string) => {
-    try {
-      const result = contactFormSchema.shape[name].safeParse(value);
-      if (result.success) {
-        const newErrors = { ...errors };
-        delete newErrors[name];
-        setErrors(newErrors);
-        return true;
-      } else {
-        setErrors(prev => ({ ...prev, [name]: result.error.errors[0].message }));
-        return false;
-      }
-    } catch {
-      setErrors(prev => ({ ...prev, [name]: "Erreur de validation" }));
-      return false;
+  const validateForm = () => {
+    const newErrors = {
+      name: '',
+      email: '',
+      message: '',
+    };
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Le nom est requis';
     }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'L\'email est requis';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Format d\'email invalide';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Le message est requis';
+    }
+
+    setErrors(newErrors);
+    return !Object.values(newErrors).some(error => error !== '');
   };
 
-  const isFormValid = () => {
-    const result = contactFormSchema.safeParse(formData);
-    return result.success;
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    validateField(name as keyof FormData, value);
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!isFormValid()) {
-      toast.error('Veuillez corriger les erreurs dans le formulaire');
+    if (!validateForm()) {
       return;
     }
 
-    if (isSubmitting) return;
-    
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
     try {
       // Vérification de sécurité supplémentaire côté client
@@ -91,10 +95,8 @@ export default function Contact() {
       );
 
       if (result.status === 200) {
-        // Réinitialiser le formulaire
+        setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
-        setErrors({});
-        
         toast.success('Message envoyé avec succès !', {
           description: 'Nous vous répondrons dans les plus brefs délais.',
           duration: 5000,
@@ -103,6 +105,7 @@ export default function Contact() {
         throw new Error('Erreur lors de l\'envoi du message');
       }
     } catch (error) {
+      setSubmitStatus('error');
       toast.error('Erreur lors de l\'envoi du message', {
         description: error instanceof Error ? error.message : 'Veuillez réessayer plus tard.',
         duration: 5000,
@@ -113,14 +116,18 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-black py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">Contact</h2>
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="space-y-6">
+    <section id="contact" className="py-20 bg-black relative">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4 text-white">Contact</h2>
+          <p className="text-gray-300 text-center mb-12">
+            Une idée de projet ? N&apos;hésitez pas à me contacter pour en discuter.
+          </p>
+
+          <div className="bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                   Nom
                 </label>
                 <input
@@ -128,22 +135,23 @@ export default function Contact() {
                   id="name"
                   name="name"
                   className={`w-full bg-white/5 border ${
-                    errors.name ? 'border-red-500' : 'border-gray-800'
+                    errors.name ? 'border-red-500' : 'border-white/10'
                   } rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 ${
-                    errors.name ? 'focus:ring-red-500' : 'focus:ring-white/20'
-                  }`}
+                    errors.name ? 'focus:ring-red-500' : 'focus:ring-primary/30'
+                  } transition-all duration-300`}
                   value={formData.name}
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  maxLength={50}
+                  maxLength={100}
                 />
                 {errors.name && (
                   <p className="mt-1 text-sm text-red-500">{errors.name}</p>
                 )}
               </div>
+
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                   Email
                 </label>
                 <input
@@ -151,10 +159,10 @@ export default function Contact() {
                   id="email"
                   name="email"
                   className={`w-full bg-white/5 border ${
-                    errors.email ? 'border-red-500' : 'border-gray-800'
+                    errors.email ? 'border-red-500' : 'border-white/10'
                   } rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 ${
-                    errors.email ? 'focus:ring-red-500' : 'focus:ring-white/20'
-                  }`}
+                    errors.email ? 'focus:ring-red-500' : 'focus:ring-primary/30'
+                  } transition-all duration-300`}
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -165,8 +173,9 @@ export default function Contact() {
                   <p className="mt-1 text-sm text-red-500">{errors.email}</p>
                 )}
               </div>
+
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                   Message
                 </label>
                 <textarea
@@ -174,10 +183,10 @@ export default function Contact() {
                   name="message"
                   rows={6}
                   className={`w-full bg-white/5 border ${
-                    errors.message ? 'border-red-500' : 'border-gray-800'
+                    errors.message ? 'border-red-500' : 'border-white/10'
                   } rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 ${
-                    errors.message ? 'focus:ring-red-500' : 'focus:ring-white/20'
-                  }`}
+                    errors.message ? 'focus:ring-red-500' : 'focus:ring-primary/30'
+                  } transition-all duration-300 resize-none`}
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -187,24 +196,47 @@ export default function Contact() {
                 {errors.message && (
                   <p className="mt-1 text-sm text-red-500">{errors.message}</p>
                 )}
-                <p className="mt-1 text-sm text-gray-400">
-                  {formData.message.length}/1000 caractères
-                </p>
               </div>
-            </div>
-            <button
-              type="submit"
-              className={`w-full bg-white text-black py-4 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center gap-2 ${
-                !isFormValid() || isSubmitting
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-gray-100'
-              }`}
-              disabled={!isFormValid() || isSubmitting}
-            >
-              <Send className="w-5 h-5" />
-              {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
-            </button>
-          </form>
+
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-medium transition-all duration-500 ease-in-out ${
+                    isSubmitting
+                      ? 'bg-gray-600 cursor-not-allowed'
+                      : 'bg-primary hover:bg-primary/90'
+                  } rounded-lg text-white`}
+                >
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary/20 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                  <span className="relative flex items-center gap-2">
+                    <Send className="w-5 h-5" />
+                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
+                  </span>
+                </button>
+              </div>
+
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center text-green-500 mt-4"
+                >
+                  Message envoyé avec succès !
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center text-red-500 mt-4"
+                >
+                  Une erreur est survenue. Veuillez réessayer.
+                </motion.div>
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </section>

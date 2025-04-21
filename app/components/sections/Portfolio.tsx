@@ -38,6 +38,28 @@ export default function Portfolio() {
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+    const container = e.currentTarget.getBoundingClientRect();
+    const position = ((e.touches[0].clientX - container.left) / container.width) * 100;
+    setSliderPosition(Math.min(Math.max(position, 0), 100));
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
+    if (isDragging) {
+      const container = e.currentTarget.getBoundingClientRect();
+      const position = ((e.touches[0].clientX - container.left) / container.width) * 100;
+      setSliderPosition(Math.min(Math.max(position, 0), 100));
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent, projectId: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -133,9 +155,14 @@ export default function Portfolio() {
         <div className="mt-16">
           <h3 className="text-3xl font-bold text-white mb-8">Avant / Après</h3>
           <div
-            className="relative aspect-video rounded-lg overflow-hidden cursor-ew-resize"
+            className="relative aspect-video rounded-lg overflow-hidden cursor-ew-resize touch-none"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {/* Version "Après" (Base layer) */}
             <div className="absolute inset-0">

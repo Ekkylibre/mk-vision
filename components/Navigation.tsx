@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_ITEMS } from '@/app/constants';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +24,7 @@ export default function Navigation() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Height of the fixed navbar
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -29,6 +32,29 @@ export default function Navigation() {
         top: offsetPosition,
         behavior: 'smooth'
       });
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleNavigation = (item: { id: string; label: string }) => {
+    if (pathname === '/') {
+      // Si nous sommes sur la page d'accueil, utiliser le scroll pour les sections
+      if (item.id === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (item.id === 'portfolio' || item.id === 'blog') {
+        window.location.href = `/${item.id}`;
+      } else {
+        scrollToSection(item.id);
+      }
+    } else {
+      // Si nous sommes sur une autre page, rediriger vers la page d'accueil avec la section
+      if (item.id === 'home') {
+        window.location.href = '/';
+      } else if (item.id === 'portfolio' || item.id === 'blog') {
+        window.location.href = `/${item.id}`;
+      } else {
+        window.location.href = `/#${item.id}`;
+      }
     }
     setIsMenuOpen(false);
   };
@@ -41,8 +67,8 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          <Link
+            href="/"
             className="text-white font-bold text-xl tracking-wider"
           >
             <Image
@@ -54,15 +80,17 @@ export default function Navigation() {
               className="w-12 h-12"
               priority
             />
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {NAVIGATION_ITEMS.map((item) => (
               <button
                 key={item.id}
-                onClick={() => item.id === 'home' ? window.scrollTo({ top: 0, behavior: 'smooth' }) : scrollToSection(item.id)}
-                className="text-gray-300 hover:text-white transition-colors duration-300"
+                onClick={() => handleNavigation(item)}
+                className={`text-gray-300 hover:text-white transition-colors duration-300 ${
+                  pathname === `/${item.id}` ? 'text-white' : ''
+                }`}
               >
                 {item.label}
               </button>
@@ -93,15 +121,17 @@ export default function Navigation() {
               : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 transform transition-transform duration-300">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 transform transition-transform duration-300 flex flex-col items-center">
             {NAVIGATION_ITEMS.map((item, index) => (
               <button
                 key={item.id}
-                onClick={() => item.id === 'home' ? window.scrollTo({ top: 0, behavior: 'smooth' }) : scrollToSection(item.id)}
-                className={`text-gray-300 hover:text-white block px-3 py-2 text-base w-full text-left transform transition-all duration-300 ${
+                onClick={() => handleNavigation(item)}
+                className={`text-gray-300 hover:text-white block px-3 py-2 text-base w-full text-center transform transition-all duration-300 ${
                   isMenuOpen
                     ? 'translate-x-0 opacity-100'
                     : 'translate-x-4 opacity-0'
+                } ${
+                  pathname === `/${item.id}` ? 'text-white' : ''
                 }`}
                 style={{
                   transitionDelay: `${index * 50}ms`

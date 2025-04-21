@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import RootLayoutClient from './RootLayoutClient';
 import Script from 'next/script';
+import Navigation from '@/components/Navigation';
+import GraduationMarks from '@/app/components/GraduationMarks';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -13,30 +15,17 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.makeyvision.com/'),
   title: 'Makey Siong | Vidéaste & Réalisateur',
-  description: 'Vidéaste / Réalisateur spécialisé dans le développement et communication de marques. J’aide les marques à augmenter leurs impacts sur internet on transmettre des messages forts à un public cible.',
+  description: 'Vidéaste / Réalisateur spécialisé dans le développement et communication de marques. J\'aide les marques à augmenter leurs impacts sur internet on transmettre des messages forts à un public cible.',
   keywords: [
     'réalisateur',
-    'filmmaker',
     'vidéaste',
-    'videographer',
-    'directeur photo',
-    'cinematographer',
-    'production vidéo',
-    'réalisation film',
-    'film maker',
-    'video maker',
-    'paris',
-    'france',
-    'makey siong',
-    'film',
-    'documentaire',
-    'corporate',
-    'film corporate',
-    'vidéo professionnel',
-    'réalisation documentaire',
-    'projets créatifs',
-    'Brétigny sur Orge',
-    'Essonne',
+    'communication',
+    'marque',
+    'impact',
+    'internet',
+    'messages',
+    'public',
+    'cible',
   ],
   authors: [
     { name: 'Makey Siong', url: 'https://www.makeyvision.com' },
@@ -107,6 +96,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className={inter.className}>
+        <Navigation />
+        <GraduationMarks />
         <RootLayoutClient>{children}</RootLayoutClient>
         {/* Google Analytics */}
         <Script

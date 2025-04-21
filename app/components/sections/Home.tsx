@@ -4,10 +4,23 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isButtonLoaded, setIsButtonLoaded] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
+    // Délai pour l'animation du bouton
+    const timer = setTimeout(() => {
+      setIsButtonLoaded(true);
+    }, 500); // 1 seconde de délai après le h1
+    return () => clearTimeout(timer);
   }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="relative min-h-screen bg-black" id="home" aria-label="Accueil">
@@ -44,9 +57,20 @@ export default function Home() {
           <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center">
             MAKEY SIONG
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 text-center tracking-wider">
+          <p className="text-xl md:text-2xl text-gray-200 mb-12 text-center tracking-wider">
             VIDEASTE / REALISATEUR
           </p>
+          <div className={`text-center transform transition-all duration-1000 delay-1000 ${isButtonLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-medium transition-all duration-500 ease-in-out bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg hover:border-primary/30 hover:bg-white/20"
+            >
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary/20 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+              <span className="relative text-white group-hover:text-primary/90 transition-colors duration-500">
+                ✨ Une vision à transmettre ?
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

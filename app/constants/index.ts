@@ -1,8 +1,9 @@
 export const NAVIGATION_ITEMS = [
   { id: 'home', label: 'Home' },
-  { id: 'portfolio', label: 'Portfolio' },
   { id: 'about', label: 'About' },
-  { id: 'contact', label: 'Contact' }
+  { id: 'contact', label: 'Contact' },
+  { id: 'portfolio', label: 'Portfolio' },
+  { id: 'blog', label: 'Blog' }
 ] as const;
 
 export const PORTFOLIO_ITEMS = [

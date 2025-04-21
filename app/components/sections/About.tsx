@@ -19,16 +19,19 @@ export default function About() {
             <h2 className="text-4xl md:text-5xl font-bold text-white">À propos</h2>
             <div className="space-y-6 text-gray-300">
               <p>
-                Avec plus de dix ans derrière la caméra, j&apos;ai eu la chance de vivre des expériences variées, qui m&apos;ont permis d&apos;explorer ma créativité tout en me lançant des défis constants.
+                Je suis Makey Siong, vidéaste-réalisateur passionné par l&apos;image qui a du sens.
               </p>
+              
               <p>
-                Mon aventure a commencé dans l&apos;univers du clip musicaux, un terrain fertile pour affiner mon regard et cultiver une véritable passion pour l&apos;art de raconter des histoires en images. Peu à peu, j&apos;ai élargi mes horizons, touchant à des projets aussi divers que des films publicitaires, interviews, documentaires …
+                🎬 Ma vision : mêler esthétique cinématographique, stratégie marketing et émotion vraie pour produire des vidéos qui marquent.
               </p>
+
               <p>
-                Pour moi, chaque projet est une rencontre, une occasion de créer quelque chose d&apos;authentique et de marquant. Ce qui compte vraiment, c&apos;est de capter l&apos;essence de ce qui doit être racontée.
+                📍 Basé à Paris, j&apos;interviens partout en France et à l&apos;international.
               </p>
+
               <p>
-                Émouvoir, inspirer, et laisser une empreinte qui reste bien après que l&apos;image se soit éteinte.
+                👉 Chaque film que je réalise est une création sur-mesure, pensée pour refléter l&apos;âme de votre marque.
               </p>
             </div>
           </div>

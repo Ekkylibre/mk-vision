@@ -92,17 +92,17 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
         <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
           <button
             onClick={previousProject}
-            className="pointer-events-auto p-2 text-white hover:text-gray-300 transition-colors transform -translate-x-12"
+            className="pointer-events-auto p-4 text-white hover:text-gray-300 transition-colors transform -translate-x-24 bg-black/30 rounded-full backdrop-blur-sm hover:bg-black/50"
             aria-label="Previous project"
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ChevronLeft className="w-10 h-10" />
           </button>
           <button
             onClick={nextProject}
-            className="pointer-events-auto p-2 text-white hover:text-gray-300 transition-colors transform translate-x-12"
+            className="pointer-events-auto p-4 text-white hover:text-gray-300 transition-colors transform translate-x-24 bg-black/30 rounded-full backdrop-blur-sm hover:bg-black/50"
             aria-label="Next project"
           >
-            <ChevronRight className="w-8 h-8" />
+            <ChevronRight className="w-10 h-10" />
           </button>
         </div>
 
