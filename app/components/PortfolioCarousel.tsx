@@ -77,7 +77,7 @@ export default function PortfolioCarousel() {
               }}
               initial={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
               animate={{ opacity: 0.3, x: 0 }}
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.3 }}
             >
               <video
                 src={videos[getPreviousPreviousIndex()].src}
@@ -109,7 +109,7 @@ export default function PortfolioCarousel() {
               }}
               initial={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
               animate={{ opacity: 0.5, x: 0 }}
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
             >
               <video
                 src={videos[getPreviousIndex()].src}
@@ -158,7 +158,7 @@ export default function PortfolioCarousel() {
               }}
               initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
               animate={{ opacity: 0.5, x: 0 }}
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
             >
               <video
                 src={videos[getNextIndex()].src}
@@ -190,7 +190,7 @@ export default function PortfolioCarousel() {
               }}
               initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
               animate={{ opacity: 0.3, x: 0 }}
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.3 }}
             >
               <video
                 src={videos[getNextNextIndex()].src}
