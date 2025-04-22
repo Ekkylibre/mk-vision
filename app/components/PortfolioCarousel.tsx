@@ -86,16 +86,6 @@ export default function PortfolioCarousel() {
                 playsInline
                 className="w-full h-full object-cover rounded-lg"
               />
-              <motion.div 
-                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-              >
-                <h3 className="text-white text-xs font-semibold">
-                  {videos[getPreviousPreviousIndex()].title}
-                </h3>
-              </motion.div>
             </motion.div>
 
             {/* Vidéo précédente */}
@@ -118,16 +108,6 @@ export default function PortfolioCarousel() {
                 playsInline
                 className="w-full h-full object-cover rounded-lg"
               />
-              <motion.div 
-                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-              >
-                <h3 className="text-white text-sm font-semibold">
-                  {videos[getPreviousIndex()].title}
-                </h3>
-              </motion.div>
             </motion.div>
 
             {/* Vidéo principale */}
@@ -140,11 +120,6 @@ export default function PortfolioCarousel() {
                 playsInline
                 className="w-full h-full object-cover rounded-lg"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                <h3 className="text-white text-lg font-semibold">
-                  {videos[currentIndex].title}
-                </h3>
-              </div>
             </div>
 
             {/* Vidéo suivante */}
@@ -167,16 +142,6 @@ export default function PortfolioCarousel() {
                 playsInline
                 className="w-full h-full object-cover rounded-lg"
               />
-              <motion.div 
-                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-              >
-                <h3 className="text-white text-sm font-semibold">
-                  {videos[getNextIndex()].title}
-                </h3>
-              </motion.div>
             </motion.div>
 
             {/* Vidéo suivante suivante */}
@@ -199,16 +164,6 @@ export default function PortfolioCarousel() {
                 playsInline
                 className="w-full h-full object-cover rounded-lg"
               />
-              <motion.div 
-                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-              >
-                <h3 className="text-white text-xs font-semibold">
-                  {videos[getNextNextIndex()].title}
-                </h3>
-              </motion.div>
             </motion.div>
           </div>
 
@@ -267,16 +222,6 @@ export default function PortfolioCarousel() {
                 playsInline
                 className="w-full h-full object-cover rounded-lg"
               />
-              <motion.div 
-                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-              >
-                <h3 className="text-white text-lg font-semibold">
-                  {videos[currentIndex].title}
-                </h3>
-              </motion.div>
             </motion.div>
           </AnimatePresence>
 
