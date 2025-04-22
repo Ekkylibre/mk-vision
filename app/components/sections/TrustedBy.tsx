@@ -20,6 +20,14 @@ export default function TrustedBy() {
     {
       name: "BJJO",
       logo: "/BJJO.jpeg",
+    },
+    {
+      name: "Association Hmong Rhône-Alpes",
+      logo: "/association_hmong-rhône_alpes.jpg",
+    },
+    {
+      name: "I2P Hmong",
+      logo: "/i2p_hmong.jpg",
     }
   ];
 
@@ -30,7 +38,7 @@ export default function TrustedBy() {
           Ils m&apos;ont fait confiance
         </h3>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-3 gap-12">
           {clients.map((client, index) => (
             <motion.div
               key={client.name}
@@ -43,8 +51,8 @@ export default function TrustedBy() {
               <Image
                 src={client.logo}
                 alt={`Logo ${client.name}`}
-                width={200} // Définissez une largeur appropriée
-                height={80} // Définissez une hauteur appropriée
+                width={200}
+                height={80}
                 className="w-full h-32 object-contain opacity-50 hover:opacity-80 transition-opacity duration-500"
               />
             </motion.div>

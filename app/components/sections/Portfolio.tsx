@@ -12,53 +12,10 @@ interface VideoModalState {
 }
 
 export default function Portfolio() {
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
   const [videoModal, setVideoModal] = useState<VideoModalState>({
     isOpen: false,
     projectId: null,
   });
-
-  const beforeVideoRef = useRef<HTMLVideoElement>(null);
-  const afterVideoRef = useRef<HTMLVideoElement>(null);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) {
-      const container = e.currentTarget.getBoundingClientRect();
-      const position = ((e.clientX - container.left) / container.width) * 100;
-      setSliderPosition(Math.min(Math.max(position, 0), 100));
-    }
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault();
-    setIsDragging(true);
-    const container = e.currentTarget.getBoundingClientRect();
-    const position = ((e.touches[0].clientX - container.left) / container.width) * 100;
-    setSliderPosition(Math.min(Math.max(position, 0), 100));
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    e.preventDefault();
-    setIsDragging(false);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault();
-    if (isDragging) {
-      const container = e.currentTarget.getBoundingClientRect();
-      const position = ((e.touches[0].clientX - container.left) / container.width) * 100;
-      setSliderPosition(Math.min(Math.max(position, 0), 100));
-    }
-  };
 
   const handleKeyDown = (e: React.KeyboardEvent, projectId: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -74,39 +31,6 @@ export default function Portfolio() {
   const closeVideoModal = () => {
     setVideoModal({ isOpen: false, projectId: null });
   };
-
-  // Synchronisation des vidéos
-  useEffect(() => {
-    const beforeVideo = beforeVideoRef.current;
-    const afterVideo = afterVideoRef.current;
-
-    if (!beforeVideo || !afterVideo) return;
-
-    const syncVideos = () => {
-      if (Math.abs(beforeVideo.currentTime - afterVideo.currentTime) > 0.1) {
-        afterVideo.currentTime = beforeVideo.currentTime;
-      }
-    };
-
-    beforeVideo.addEventListener('play', syncVideos);
-    beforeVideo.addEventListener('seeking', syncVideos);
-
-    // Synchronisation toutes les secondes pour garantir
-    const syncInterval = setInterval(syncVideos, 1000);
-
-    return () => {
-      beforeVideo.removeEventListener('play', syncVideos);
-      beforeVideo.removeEventListener('seeking', syncVideos);
-      clearInterval(syncInterval);
-    };
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('mouseup', handleMouseUp);
-    return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, []);
 
   return (
     <section id="portfolio" className="bg-black py-20" aria-label="Portfolio">
@@ -150,80 +74,6 @@ export default function Portfolio() {
             onClose={closeVideoModal}
           />
         )}
-
-        {/* Before/After Comparison */}
-        <div className="mt-16">
-          <h3 className="text-3xl font-bold text-white mb-8">Avant / Après</h3>
-          <div
-            className="relative aspect-video rounded-lg overflow-hidden cursor-ew-resize touch-none"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            {/* Version "Après" (Base layer) */}
-            <div className="absolute inset-0">
-              <video
-                ref={afterVideoRef}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-                preload="auto"
-              >
-                <source
-                  src="/final-cut.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-
-            {/* Version "Avant" (Overlay avec clip-path) */}
-            <div
-              className="absolute inset-0"
-              style={{
-                clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
-              }}
-            >
-              <video
-                ref={beforeVideoRef}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-                preload="auto"
-              >
-                <source
-                  src="/raw-version.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-
-            {/* Slider Handle */}
-            <div
-              className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
-              style={{ left: `${sliderPosition}%` }}
-            >
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                <div className="w-1 h-4 bg-black rounded-full"></div>
-              </div>
-            </div>
-
-            {/* Labels */}
-            <div className="absolute top-4 left-4 bg-black/50 px-3 py-1 rounded text-sm text-white">
-              Avant
-            </div>
-            <div className="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded text-sm text-white">
-              Après
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

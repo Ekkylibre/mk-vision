@@ -114,9 +114,9 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Production vidéo pour startups */}
             <div className="group bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-700 ease-in-out hover:transform hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/5">
-              <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-primary/90 transition-colors duration-700">🎥 Production vidéo pour startups</h3>
+              <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-primary/90 transition-colors duration-700">🎥 Production vidéo de A à Z</h3>
               <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-700">
-                Pitch, présentation, teaser… des vidéos à fort impact pour booster votre lancement ou vos levées de fonds.
+              Nous construisons ensemble votre projet dès la phase de réflexion. Une fois validé, vous n’avez plus qu’à vous laisser guider, on s’occupe de tout !
               </p>
             </div>
 
@@ -130,7 +130,7 @@ export default function Services() {
 
             {/* Contenu social media cinématographique */}
             <div className="group bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-700 ease-in-out hover:transform hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/5">
-              <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-primary/90 transition-colors duration-700">📱 Contenu social media cinématographique</h3>
+              <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-primary/90 transition-colors duration-700">📱 Contenu social media</h3>
               <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-700">
                 Des formats courts, puissants et calibrés pour captiver votre audience sur Instagram, LinkedIn ou YouTube.
               </p>

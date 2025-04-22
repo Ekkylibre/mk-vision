@@ -4,24 +4,25 @@ export default function About() {
   return (
     <section id="about" className="bg-black py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">
+          À propos
+        </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative h-[600px] rounded-lg overflow-hidden">
             <Image
               src="/makey-profile.jpg"
               alt="Makey Siong"
-              className="object-cover"
-              style={{ width: '100%', height: '100%' }}
-              priority
               fill
+              className="object-cover"
+              priority
             />
           </div>
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-white">À propos</h2>
             <div className="space-y-6 text-gray-300">
               <p>
                 Je suis Makey Siong, vidéaste-réalisateur passionné par l&apos;image qui a du sens.
               </p>
-              
+               
               <p>
                 🎬 Ma vision : mêler esthétique cinématographique, stratégie marketing et émotion vraie pour produire des vidéos qui marquent.
               </p>
