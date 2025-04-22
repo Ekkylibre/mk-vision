@@ -56,6 +56,6 @@ body {
 }
 
 .animate-fade-in-delayed {
-  animation: fadeInDelayed 0.5s ease-in-out 0.5s forwards;
+  animation: fadeInDelayed 0.5s ease-in-out 0.2s forwards;
   opacity: 0;
 }
