@@ -6,6 +6,7 @@ import { PORTFOLIO_ITEMS } from '@/app/constants';
 import VideoCarousel from '@/app/components/VideoCarousel';
 import Image from 'next/image';
 import Footer from '@/app/components/Footer';
+import PortfolioCarousel from '@/app/components/PortfolioCarousel';
 
 interface VideoModalState {
   isOpen: boolean;
@@ -95,6 +96,10 @@ export default function PortfolioPage() {
           <p className="text-xl text-gray-300 mb-16 max-w-3xl mx-auto text-center">
             Découvrez mes réalisations vidéo, du film corporate au documentaire, en passant par les contenus pour les réseaux sociaux.
           </p>
+          
+          <div className="mb-16">
+            <PortfolioCarousel />
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {PORTFOLIO_ITEMS.map((project) => (

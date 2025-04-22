@@ -62,7 +62,7 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
+        isScrolled || isMenuOpen ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,7 +99,7 @@ export default function Navigation() {
 
           {/* Mobile Navigation Button */}
           <button
-            className="md:hidden text-white p-2 -mr-2 focus:outline-none"
+            className="md:hidden text-white p-2 -mr-2 focus:outline-none z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-label="Toggle menu"
@@ -115,9 +115,9 @@ export default function Navigation() {
 
         {/* Mobile Navigation Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          className={`md:hidden fixed top-16 left-0 right-0 bg-black/80 backdrop-blur-sm transition-all duration-300 ease-in-out ${
             isMenuOpen
-              ? 'max-h-64 opacity-100'
+              ? 'max-h-screen opacity-100'
               : 'max-h-0 opacity-0'
           }`}
         >
