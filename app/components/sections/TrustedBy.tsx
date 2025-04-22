@@ -7,27 +7,27 @@ export default function TrustedBy() {
   const clients = [
     {
       name: "Gigafit Orléans",
-      logo: "/gigafit.jpg",
+      logo: "/gigafit.webp",
     },
     {
       name: "KFBC Clichy",
-      logo: "/kfbc_clichy.png",
+      logo: "/kfbc_clichy.webp",
     },
     {
       name: "En coaching Simone",
-      logo: "/En_coaching_simone.PNG",
+      logo: "/En_coaching_simone.webp",
     },
     {
       name: "BJJO",
-      logo: "/BJJO.jpeg",
+      logo: "/BJJO.webp",
     },
     {
       name: "Association Hmong Rhône-Alpes",
-      logo: "/association_hmong-rhône_alpes.jpg",
+      logo: "/association_hmong-rhône_alpes.webp",
     },
     {
       name: "I2P Hmong",
-      logo: "/i2p_hmong.jpg",
+      logo: "/i2p_hmong.webp",
     }
   ];
 

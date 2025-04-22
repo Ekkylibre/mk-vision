@@ -163,8 +163,8 @@ export default function PortfolioPage() {
                   preload="auto"
                 >
                   <source
-                    src="/final-cut.mp4"
-                    type="video/mp4"
+                    src="/final-cut.webm"
+                    type="video/webm"
                   />
                 </video>
               </div>
@@ -186,8 +186,8 @@ export default function PortfolioPage() {
                   preload="auto"
                 >
                   <source
-                    src="/raw-version.mp4"
-                    type="video/mp4"
+                    src="/raw-version.webm"
+                    type="video/webm"
                   />
                 </video>
               </div>

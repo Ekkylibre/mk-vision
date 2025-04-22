@@ -1,42 +1,42 @@
 export const videos = [
   {
     title: "KENOU Teaser 1",
-    src: "/KENOU Teaser 1 format portrait.mp4",
+    src: "/KENOU-Teaser-1-format-portrait.webm",
   },
   {
     title: "KENOU Teaser 2",
-    src: "/KENOU Teaser 2 format portrait.mp4",
+    src: "/KENOU Teaser 2 format portrait.webm",
   },
   {
     title: "REELS Lifestyle",
-    src: "/REELS Lifestyle.mp4",
+    src: "/REELS Lifestyle.webm",
   },
   {
     title: "360",
-    src: "/360.mp4",
+    src: "/360.webm",
   },
   {
     title: "Drone robot",
-    src: "/Drone robot.mp4",
+    src: "/Drone robot.webm",
   },
   {
     title: "Colo film",
-    src: "/Colo film.mp4",
+    src: "/Colo film.webm",
   },
   {
     title: "Trantranzaï",
-    src: "/Trantranzaï.mp4",
+    src: "/Trantranzaï.webm",
   },
   {
     title: "Rig Caméra",
-    src: "/Rig Caméra.mp4",
+    src: "/Rig-Caméra.webm",
   },
   {
     title: "Kick Stone",
-    src: "/Kick Stone.mp4",
+    src: "/Kick Stone.webm",
   },
   {
     title: "Ducati 1ère",
-    src: "/Ducati 1ère.mp4",
+    src: "/Ducati 1ère.webm",
   }
 ]; 

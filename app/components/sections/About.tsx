@@ -10,7 +10,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative h-[600px] rounded-lg overflow-hidden">
             <Image
-              src="/makey-profile.jpg"
+              src="/makey-profile.webp"
               alt="Makey Siong"
               fill
               className="object-cover"

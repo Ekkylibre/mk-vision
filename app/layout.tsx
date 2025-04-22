@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: 'Makey Siong',
     images: [
       {
-        url: '/makey-profile.jpg',
+        url: '/makey-profile.webp',
         width: 1200,
         height: 630,
         alt: 'Makey Siong - Réalisateur & Directeur de la Photographie',
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Makey Siong | Réalisateur & Filmmaker',
     description: 'Découvrez les projets de Makey Siong, vidéaste et réalisateur basé à Brétigny-sur-Orge, Essonne, spécialisé dans le film et le documentaire corporate, offrant des vidéos créatives et de qualité.',
-    images: ['/makey-profile.jpg'],
+    images: ['/makey-profile.webp'],
     creator: '@makeysiong',
     site: '@makeysiong',
   },

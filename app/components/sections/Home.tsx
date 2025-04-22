@@ -36,8 +36,8 @@ export default function Home() {
           aria-label="Vidéo de présentation"
         >
           <source
-            src="/filmmaker-showreel.mp4"
-            type="video/mp4"
+            src="/filmmaker-showreel.webm"
+            type="video/webm"
           />
           <track
             kind="captions"
