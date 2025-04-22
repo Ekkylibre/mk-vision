@@ -4,15 +4,14 @@ import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 
-const Services = () => {
-  const [lights, setLights] = useState<{ x: number; y: number; size: number }[]>([]);
+export default function Services() {
+  const [lights, setLights] = useState<Array<{ x: number; y: number; size: number }>>([]);
   const [activeParagraph, setActiveParagraph] = useState(0);
   const paragraphsRef = useRef<(HTMLParagraphElement | null)[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
 
   useEffect(() => {
-    // Créer des points lumineux aléatoires
     const generateLights = () => {
       const newLights = Array.from({ length: 5 }, () => ({
         x: Math.random() * 100,
@@ -23,8 +22,7 @@ const Services = () => {
     };
 
     generateLights();
-    const interval = setInterval(generateLights, 8000); // Augmenté à 8 secondes pour plus de douceur
-
+    const interval = setInterval(generateLights, 8000);
     return () => clearInterval(interval);
   }, []);
 
@@ -74,11 +72,11 @@ const Services = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 h-screen flex flex-col justify-center">
+      <div className="container mx-auto px-4 h-auto sm:h-screen flex flex-col sm:justify-center py-12 sm:py-0">
         {/* Paragraphe d'introduction */}
-        <div className="max-w-3xl mx-auto text-center mb-16 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-16 relative z-10">
           <motion.p 
-            className={`text-lg text-gray-200 mb-6 transition-all duration-1000 ease-in-out ${activeParagraph === 0 ? 'text-white scale-105' : 'opacity-50 scale-95'}`}
+            className={`text-lg text-gray-200 mb-4 sm:mb-6 transition-all duration-1000 ease-in-out ${activeParagraph === 0 ? 'text-white scale-105' : 'opacity-50 scale-95'}`}
             variants={paragraphVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -88,7 +86,7 @@ const Services = () => {
             Chez MakeyVision, nous accompagnons les startups, entrepreneurs et marques ambitieuses dans la création de vidéos puissantes, sincères et hautement esthétiques.
           </motion.p>
           <motion.p 
-            className={`text-lg text-gray-200 mb-8 transition-all duration-1000 ease-in-out ${activeParagraph === 1 ? 'text-white scale-105' : 'opacity-50 scale-95'}`}
+            className={`text-lg text-gray-200 mb-4 sm:mb-8 transition-all duration-1000 ease-in-out ${activeParagraph === 1 ? 'text-white scale-105' : 'opacity-50 scale-95'}`}
             variants={paragraphVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -111,7 +109,7 @@ const Services = () => {
 
         {/* Bloc Services */}
         <div className="max-w-6xl mx-auto relative z-10">
-          <h3 className="text-3xl font-bold text-center mb-12 text-white">Ce que nous proposons</h3>
+          <h3 className="text-3xl font-bold text-center mb-8 sm:mb-12 text-white">Ce que nous proposons</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Production vidéo pour startups */}
@@ -150,6 +148,4 @@ const Services = () => {
       </div>
     </section>
   );
-};
-
-export default Services; 
+} 
