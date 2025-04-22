@@ -218,7 +218,7 @@ export default function PortfolioCarousel() {
               className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-400"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 1.8 }}
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.8 }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -232,7 +232,7 @@ export default function PortfolioCarousel() {
               className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-400"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 1.8 }}
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.8 }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
