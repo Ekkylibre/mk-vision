@@ -29,3 +29,33 @@ body {
 .animate-scroll {
   animation: scroll 1.5s ease-in-out infinite;
 }
+
+/* Animations pour la page 404 */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelayed {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-in-delayed {
+  animation: fadeInDelayed 0.5s ease-in-out 0.5s forwards;
+  opacity: 0;
+}

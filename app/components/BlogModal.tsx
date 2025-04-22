@@ -5,7 +5,16 @@ import Image from 'next/image';
 import { BLOG_POSTS } from '@/app/constants/blog-posts';
 import { useEffect } from 'react';
 
-type BlogPost = typeof BLOG_POSTS[number];
+// Définir un type générique pour les articles de blog
+type BlogPost = {
+  id: number;
+  title: string;
+  excerpt: string;
+  image: string;
+  date: string;
+  category: string;
+  content: string;
+};
 
 interface BlogModalProps {
   post: BlogPost;

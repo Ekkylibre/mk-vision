@@ -7,10 +7,22 @@ import BlogModal from '@/app/components/BlogModal';
 import BlogCard from '@/app/components/BlogCard';
 import Footer from '@/app/components/Footer';
 
+// Définir un type générique pour les articles de blog
+type BlogPost = {
+  id: number;
+  title: string;
+  excerpt: string;
+  image: string;
+  date: string;
+  category: string;
+  content: string;
+};
+
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [posts] = useState(BLOG_POSTS);
-  const [selectedPost, setSelectedPost] = useState<typeof BLOG_POSTS[0] | null>(null);
+  // Utiliser une conversion de type plus sûre
+  const [posts] = useState<BlogPost[]>(BLOG_POSTS as unknown as BlogPost[]);
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
   const filteredPosts = posts.filter(post => 
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -18,7 +30,7 @@ export default function Blog() {
     post.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handlePostClick = (post: typeof BLOG_POSTS[0]) => {
+  const handlePostClick = (post: BlogPost) => {
     setSelectedPost(post);
   };
 

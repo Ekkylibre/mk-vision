@@ -11,7 +11,7 @@ export default function Home() {
     // Délai pour l'animation du bouton
     const timer = setTimeout(() => {
       setIsButtonLoaded(true);
-    }, 500); // 1 seconde de délai après le h1
+    }, 1000); // 1 seconde de délai après le h1
     return () => clearTimeout(timer);
   }, []);
 
@@ -60,7 +60,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-gray-200 mb-12 text-center tracking-wider">
             VIDEASTE / REALISATEUR
           </p>
-          <div className={`text-center transform transition-all duration-1000 delay-1000 ${isButtonLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className={`text-center ${isButtonLoaded ? 'animate-fade-in-delayed' : 'opacity-0'}`}>
             <button 
               onClick={() => scrollToSection('contact')}
               className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-medium transition-all duration-500 ease-in-out bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg hover:border-primary/30 hover:bg-white/20"

@@ -60,7 +60,7 @@ const Services = () => {
         {lights.map((light, index) => (
           <div
             key={index}
-            className="absolute transition-all duration-[8000ms] ease-in-out"
+            className="absolute transition-all ease-in-out"
             style={{
               left: `${light.x}%`,
               top: `${light.y}%`,

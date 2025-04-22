@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { BLOG_POSTS } from '@/app/constants/blog-posts';
 
+// Définir un type générique pour les articles de blog
 type BlogPost = {
   id: number;
   title: string;
