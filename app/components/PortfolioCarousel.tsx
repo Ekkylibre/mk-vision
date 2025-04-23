@@ -176,11 +176,11 @@ export default function PortfolioCarousel() {
             <motion.button
               onClick={() => paginate(-1)}
               className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
-              whileHover={{ scale: 1.1, backgroundColor: 'rgba(0,0,0,0.7)' }}
+              whileHover={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
               whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 1 }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -192,11 +192,11 @@ export default function PortfolioCarousel() {
             <motion.button
               onClick={() => paginate(1)}
               className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
-              whileHover={{ scale: 1.1, backgroundColor: 'rgba(0,0,0,0.7)' }}
+              whileHover={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
               whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 1 }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
