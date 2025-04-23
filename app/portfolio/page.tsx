@@ -112,7 +112,9 @@ export default function PortfolioPage() {
                   alt={`Aperçu du projet ${project.title}`}
                   width={800}
                   height={450}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                  priority={false}
                 />
                 <div
                   className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center"

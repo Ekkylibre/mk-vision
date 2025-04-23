@@ -209,7 +209,7 @@ export default function PortfolioCarousel() {
       {/* Version Mobile */}
       <div className="md:hidden" role="region" aria-label="Carrousel de vidéos">
         <div 
-          className="relative h-[600px] w-full overflow-hidden"
+          className="relative h-[50vh] w-full overflow-hidden"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -236,6 +236,7 @@ export default function PortfolioCarousel() {
                 playsInline
                 className="w-full h-full object-cover rounded-lg"
                 aria-label={videos[currentIndex].title || `Vidéo ${currentIndex + 1}`}
+                preload="metadata"
               />
             </motion.div>
           </AnimatePresence>
