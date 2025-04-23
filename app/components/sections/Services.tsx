@@ -6,8 +6,6 @@ import { motion, useInView } from 'framer-motion';
 
 export default function Services() {
   const [lights, setLights] = useState<Array<{ x: number; y: number; size: number }>>([]);
-  const [activeParagraph, setActiveParagraph] = useState(0);
-  const paragraphsRef = useRef<(HTMLParagraphElement | null)[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
 
@@ -25,31 +23,6 @@ export default function Services() {
     const interval = setInterval(generateLights, 8000);
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    if (isInView) {
-      // Démarrer l'animation des paragraphes
-      const interval = setInterval(() => {
-        setActiveParagraph((prev) => (prev < 2 ? prev + 1 : 0));
-      }, 5000); // Changer de paragraphe actif toutes les 5 secondes
-
-      return () => clearInterval(interval);
-    }
-  }, [isInView]);
-
-  const paragraphVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.5,
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    }),
-    exit: { opacity: 0, y: -20 },
-  };
 
   return (
     <section className="min-h-screen bg-black relative overflow-hidden" ref={sectionRef}>
@@ -75,36 +48,15 @@ export default function Services() {
       <div className="container mx-auto px-4 h-auto sm:h-screen flex flex-col sm:justify-center py-12 sm:py-0">
         {/* Paragraphe d'introduction */}
         <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-16 relative z-10">
-          <motion.p 
-            className={`text-lg text-gray-200 mb-4 sm:mb-6 transition-all duration-1000 ease-in-out ${activeParagraph === 0 ? 'text-white scale-105' : 'opacity-50 scale-95'}`}
-            variants={paragraphVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            custom={0}
-            ref={(el) => (paragraphsRef.current[0] = el)}
-          >
+          <p className="text-lg text-white mb-4 sm:mb-6">
             Chez MakeyVision, nous accompagnons les startups, entrepreneurs et marques ambitieuses dans la création de vidéos puissantes, sincères et hautement esthétiques.
-          </motion.p>
-          <motion.p 
-            className={`text-lg text-gray-200 mb-4 sm:mb-8 transition-all duration-1000 ease-in-out ${activeParagraph === 1 ? 'text-white scale-105' : 'opacity-50 scale-95'}`}
-            variants={paragraphVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            custom={1}
-            ref={(el) => (paragraphsRef.current[1] = el)}
-          >
+          </p>
+          <p className="text-lg text-white mb-4 sm:mb-8">
             Spécialisés dans la production vidéo branding, le storytelling visuel et les formats cinématographiques, nous transformons votre vision en émotion.
-          </motion.p>
-          <motion.p 
-            className={`text-lg text-gray-200 transition-all duration-1000 ease-in-out ${activeParagraph === 2 ? 'text-white scale-105' : 'opacity-50 scale-95'}`}
-            variants={paragraphVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            custom={2}
-            ref={(el) => (paragraphsRef.current[2] = el)}
-          >
+          </p>
+          <p className="text-lg text-white">
             🎯 Notre mission : faire rayonner votre identité grâce à une vidéo unique, impactante et alignée avec vos objectifs.
-          </motion.p>
+          </p>
         </div>
 
         {/* Bloc Services */}
@@ -116,7 +68,7 @@ export default function Services() {
             <div className="group bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-700 ease-in-out hover:transform hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/5">
               <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-primary/90 transition-colors duration-700">🎥 Production vidéo de A à Z</h3>
               <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-700">
-              Nous construisons ensemble votre projet dès la phase de réflexion. Une fois validé, vous n’avez plus qu’à vous laisser guider, on s’occupe de tout !
+              Nous construisons ensemble votre projet dès la phase de réflexion. Une fois validé, vous n'avez plus qu'à vous laisser guider, on s'occupe de tout !
               </p>
             </div>
 
