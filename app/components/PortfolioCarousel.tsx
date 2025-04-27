@@ -84,6 +84,7 @@ export default function PortfolioCarousel() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 className="w-full h-full object-cover rounded-lg"
               />
             </motion.div>
@@ -106,6 +107,7 @@ export default function PortfolioCarousel() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 className="w-full h-full object-cover rounded-lg"
               />
             </motion.div>
@@ -123,6 +125,7 @@ export default function PortfolioCarousel() {
                 muted
                 loop
                 playsInline
+                preload="auto"
                 className="w-full h-full object-cover rounded-lg"
               />
             </motion.div>
@@ -145,6 +148,7 @@ export default function PortfolioCarousel() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 className="w-full h-full object-cover rounded-lg"
               />
             </motion.div>
@@ -167,6 +171,7 @@ export default function PortfolioCarousel() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 className="w-full h-full object-cover rounded-lg"
               />
             </motion.div>
@@ -234,9 +239,9 @@ export default function PortfolioCarousel() {
                 muted
                 loop
                 playsInline
+                preload="auto"
                 className="w-full h-full object-cover rounded-lg"
                 aria-label={videos[currentIndex].title || `Vidéo ${currentIndex + 1}`}
-                preload="metadata"
               />
             </motion.div>
           </AnimatePresence>
