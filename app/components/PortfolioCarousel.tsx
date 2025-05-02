@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { videos } from '@/app/constants/videos';
 
 export default function PortfolioCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(6);
+  const [currentIndex, setCurrentIndex] = useState(3);
   const [direction, setDirection] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -86,6 +86,7 @@ export default function PortfolioCarousel() {
                 playsInline
                 preload="metadata"
                 className="w-full h-full object-cover rounded-lg"
+                aria-label={`Vidéo précédente précédente : ${videos[getPreviousPreviousIndex()].title}`}
               />
             </motion.div>
 
@@ -109,6 +110,7 @@ export default function PortfolioCarousel() {
                 playsInline
                 preload="metadata"
                 className="w-full h-full object-cover rounded-lg"
+                aria-label={`Vidéo précédente : ${videos[getPreviousIndex()].title}`}
               />
             </motion.div>
 
@@ -127,6 +129,7 @@ export default function PortfolioCarousel() {
                 playsInline
                 preload="auto"
                 className="w-full h-full object-cover rounded-lg"
+                aria-label={`Vidéo actuelle : ${videos[currentIndex].title}`}
               />
             </motion.div>
 
@@ -150,6 +153,7 @@ export default function PortfolioCarousel() {
                 playsInline
                 preload="metadata"
                 className="w-full h-full object-cover rounded-lg"
+                aria-label={`Vidéo suivante : ${videos[getNextIndex()].title}`}
               />
             </motion.div>
 
@@ -173,6 +177,7 @@ export default function PortfolioCarousel() {
                 playsInline
                 preload="metadata"
                 className="w-full h-full object-cover rounded-lg"
+                aria-label={`Vidéo suivante suivante : ${videos[getNextNextIndex()].title}`}
               />
             </motion.div>
           </div>
@@ -241,7 +246,7 @@ export default function PortfolioCarousel() {
                 playsInline
                 preload="auto"
                 className="w-full h-full object-cover rounded-lg"
-                aria-label={videos[currentIndex].title || `Vidéo ${currentIndex + 1}`}
+                aria-label={`Vidéo actuelle : ${videos[currentIndex].title}`}
               />
             </motion.div>
           </AnimatePresence>

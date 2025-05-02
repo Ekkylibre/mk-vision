@@ -5,7 +5,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Combien coûte une vidéo ?",
-    answer: "Chaque projet est unique, mais une production branding débute à partir de 1500€. Un devis précis est fourni après discussion."
+    answer: "Chaque projet est unique, un devis précis est fourni après discussion."
   },
   {
     question: "Combien de temps dure une production ?",

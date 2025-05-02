@@ -8,35 +8,27 @@ export const videos = [
     src: "/KENOU Teaser 2 format portrait.webm",
   },
   {
-    title: "REELS Lifestyle",
-    src: "/REELS Lifestyle.webm",
+    title: "REEL Fécamp",
+    src: "/REEL-fécamp-1.webm",
   },
   {
-    title: "360",
-    src: "/360.webm",
+    title: "Ride POV",
+    src: "/ride-pov.webm",
+  },
+  {
+    title: "Ducati 1ère",
+    src: "/Ducati 1ère.webm",
   },
   {
     title: "Drone robot",
     src: "/Drone robot.webm",
   },
   {
-    title: "Colo film",
-    src: "/Colo film.webm",
+    title: "360",
+    src: "/360.webm",
   },
   {
-    title: "Trantranzaï",
-    src: "/Trantranzaï.webm",
-  },
-  {
-    title: "Rig Caméra",
-    src: "/Rig-Caméra.webm",
-  },
-  {
-    title: "Kick Stone",
-    src: "/Kick Stone.webm",
-  },
-  {
-    title: "Ducati 1ère",
-    src: "/Ducati 1ère.webm",
+    title: "Nesquick REEL",
+    src: "/Nesquick REEL .webm",
   }
 ]; 
