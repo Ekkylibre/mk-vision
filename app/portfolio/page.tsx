@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Play } from 'lucide-react';
-import { PORTFOLIO_ITEMS } from '@/app/constants';
-import VideoCarousel from '@/app/components/VideoCarousel';
+import { PORTFOLIO_ITEMS, VERTICAL_VIDEOS } from '@/app/constants';
+import VideoModal from '@/components/VideoModal';
+import VerticalVideoCarousel from '@/components/VerticalVideoCarousel';
 import Image from 'next/image';
 import Footer from '@/app/components/Footer';
 
@@ -92,9 +93,15 @@ export default function PortfolioPage() {
       <main className="bg-black min-h-screen pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">Portfolio</h1>
-          <p className="text-xl text-gray-300 mb-16 max-w-3xl mx-auto text-center">
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto text-center">
             Découvrez mes réalisations vidéo, du film corporate au documentaire, en passant par les contenus pour les réseaux sociaux.
           </p>
+
+          {/* Carrousel Vertical */}
+          <div className="h-screen mb-20">
+            <VerticalVideoCarousel videos={VERTICAL_VIDEOS} />
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {PORTFOLIO_ITEMS.map((project) => (
@@ -129,8 +136,8 @@ export default function PortfolioPage() {
 
           {/* Video Modal */}
           {videoModal.isOpen && videoModal.projectId && (
-            <VideoCarousel
-              initialProjectId={videoModal.projectId}
+            <VideoModal
+              projectId={videoModal.projectId}
               onClose={closeVideoModal}
             />
           )}

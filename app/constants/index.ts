@@ -65,3 +65,46 @@ export const SOCIAL_LINKS = [
     icon: 'Youtube'
   }
 ] as const;
+
+export const VERTICAL_VIDEOS = [
+  {
+    id: 'nesquick-reel',
+    title: 'Nesquick REEL',
+    src: '/Nesquick REEL .mp4'
+  },
+  {
+    id: 'ducati',
+    title: 'Ducati',
+    src: '/Ducati 1ère.mp4'
+  },
+  {
+    id: 'reel-fecamp',
+    title: 'REEL Fécamp',
+    src: '/REEL fécamp 1.mp4'
+  },
+  {
+    id: 'drone-robot',
+    title: 'Drone Robot',
+    src: '/Drone robot.mp4'
+  },
+  {
+    id: '360',
+    title: '360°',
+    src: '/360.mp4'
+  },
+  {
+    id: 'filmmaker-showreel',
+    title: 'Filmmaker Showreel',
+    src: '/filmmaker-showreel.mp4'
+  },
+  {
+    id: 'kenou-teaser-1',
+    title: 'KENOU Teaser 1',
+    src: '/KENOU Teaser 1 format portrait.mp4'
+  },
+  {
+    id: 'kenou-teaser-2',
+    title: 'KENOU Teaser 2',
+    src: '/KENOU Teaser 2 format portrait.mp4'
+  },
+] as const;
