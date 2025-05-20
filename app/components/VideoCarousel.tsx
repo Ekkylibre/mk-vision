@@ -78,7 +78,7 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
         <div className="relative aspect-video bg-black">
           {currentProject.videoUrl && (
             <iframe
-              src={`https://www.youtube.com/embed/${getYouTubeVideoId(currentProject.videoUrl)}?autoplay=1`}
+              src={`https://www.youtube.com/embed/${getYouTubeVideoId(currentProject.videoUrl)}?autoplay=1&rel=0&modestbranding=1`}
               title={currentProject.title}
               className="absolute inset-0 w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

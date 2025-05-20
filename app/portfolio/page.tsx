@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play } from 'lucide-react';
 import { PORTFOLIO_ITEMS, VERTICAL_VIDEOS } from '@/app/constants';
-import VideoModal from '@/components/VideoModal';
+import VideoCarousel from '@/app/components/VideoCarousel';
 import VerticalVideoCarousel from '@/components/VerticalVideoCarousel';
 import Image from 'next/image';
 import Footer from '@/app/components/Footer';
@@ -136,8 +136,8 @@ export default function PortfolioPage() {
 
           {/* Video Modal */}
           {videoModal.isOpen && videoModal.projectId && (
-            <VideoModal
-              projectId={videoModal.projectId}
+            <VideoCarousel
+              initialProjectId={videoModal.projectId}
               onClose={closeVideoModal}
             />
           )}
