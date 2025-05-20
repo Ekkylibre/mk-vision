@@ -20,6 +20,7 @@ export default function PortfolioPage() {
     isOpen: false,
     projectId: null,
   });
+  const [isMobile, setIsMobile] = useState(false);
 
   const beforeVideoRef = useRef<HTMLVideoElement>(null);
   const afterVideoRef = useRef<HTMLVideoElement>(null);
@@ -88,20 +89,35 @@ export default function PortfolioPage() {
     };
   }, []);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
   return (
     <>
       <main className="bg-black min-h-screen pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">Portfolio</h1>
           
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto text-center">
+          <p className={`text-xl text-gray-300 max-w-3xl mx-auto text-center ${isMobile ? 'mb-16' : ''}`}>
             Découvrez mes réalisations vidéo, du film corporate au documentaire, en passant par les contenus pour les réseaux sociaux.
           </p>
 
-          {/* Carrousel Vertical */}
-          <div className="h-screen mb-20">
-            <VerticalVideoCarousel videos={VERTICAL_VIDEOS} />
-          </div>
+          {/* Carrousel Vertical - Masqué en mobile */}
+          {!isMobile && (
+            <div className="h-screen mb-20">
+              <VerticalVideoCarousel videos={VERTICAL_VIDEOS} />
+            </div>
+          )}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {PORTFOLIO_ITEMS.map((project) => (
