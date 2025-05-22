@@ -114,11 +114,11 @@ export default function PortfolioPage() {
           </p>
 
           {/* Carrousel Vertical - Masqué en mobile */}
-          {/*{!isMobile && (
+          {!isMobile && (
             <div className="h-screen mb-20">
               <VerticalVideoCarousel videos={VERTICAL_VIDEOS} />
             </div>
-          )}*/}
+          )}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {PORTFOLIO_ITEMS.map((project) => (
