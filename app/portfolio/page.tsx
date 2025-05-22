@@ -108,16 +108,17 @@ export default function PortfolioPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">Portfolio</h1>
           
-          <p className={`text-xl text-gray-300 max-w-3xl mx-auto text-center ${isMobile ? 'mb-16' : ''}`}>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto text-center mb-16">
+            {/* Marge fixe de 16rem pour maintenir un espacement cohérent avec la page blog */}
             Découvrez mes réalisations vidéo, du film corporate au documentaire, en passant par les contenus pour les réseaux sociaux.
           </p>
 
           {/* Carrousel Vertical - Masqué en mobile */}
-          {!isMobile && (
+          {/*{!isMobile && (
             <div className="h-screen mb-20">
               <VerticalVideoCarousel videos={VERTICAL_VIDEOS} />
             </div>
-          )}
+          )}*/}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {PORTFOLIO_ITEMS.map((project) => (
@@ -234,4 +235,4 @@ export default function PortfolioPage() {
       <Footer />
     </>
   );
-} 
+}
