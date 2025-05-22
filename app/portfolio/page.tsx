@@ -175,7 +175,6 @@ export default function PortfolioPage() {
               <div className="absolute inset-0">
                 <ProgressiveVideo
                   src="/final-cut.mp4"
-                  poster="/final-cut-poster.jpg"
                   className="w-full h-full"
                   autoPlay
                   loop
@@ -193,7 +192,6 @@ export default function PortfolioPage() {
               >
                 <ProgressiveVideo
                   src="/raw-version.mp4"
-                  poster="/raw-version-poster.jpg"
                   className="w-full h-full"
                   autoPlay
                   loop

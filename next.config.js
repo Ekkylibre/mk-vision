@@ -27,6 +27,18 @@ const nextConfig = {
     });
     return config;
   },
+  // Ajout de la configuration pour améliorer la stabilité
+  poweredByHeader: false,
+  reactStrictMode: true,
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Optimisation du chargement des scripts
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
 };
 
 module.exports = nextConfig;

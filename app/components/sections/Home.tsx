@@ -29,7 +29,6 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/60 z-10" />
         <ProgressiveVideo
           src="/filmmaker-showreel.mp4"
-          poster="/filmmaker-showreel-poster.jpg"
           className="w-full h-full opacity-80"
           autoPlay
           loop

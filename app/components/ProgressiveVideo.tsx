@@ -1,11 +1,9 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 
 interface ProgressiveVideoProps {
   src: string;
-  poster?: string;
   className?: string;
   autoPlay?: boolean;
   loop?: boolean;
@@ -16,7 +14,6 @@ interface ProgressiveVideoProps {
 
 export default function ProgressiveVideo({
   src,
-  poster,
   className = '',
   autoPlay = false,
   loop = false,
@@ -60,23 +57,17 @@ export default function ProgressiveVideo({
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      {/* Poster/Thumbnail */}
-      {poster && isLoading && (
-        <div className="absolute inset-0">
-          <Image
-            src={poster}
-            alt="Vidéo thumbnail"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-      )}
-
-      {/* Loading Spinner */}
+      {/* Loading Spinner avec fond noir */}
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-          <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        <div className="absolute inset-0 flex items-center justify-center bg-black">
+          <div className="relative">
+            {/* Cercle extérieur */}
+            <div className="w-12 h-12 border-4 border-white/20 rounded-full"></div>
+            {/* Cercle animé */}
+            <div className="absolute top-0 left-0 w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            {/* Point central */}
+            <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-primary rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+          </div>
         </div>
       )}
 
