@@ -5,6 +5,7 @@ import { Play } from 'lucide-react';
 import { PORTFOLIO_ITEMS, VERTICAL_VIDEOS } from '@/app/constants';
 import VideoCarousel from '@/app/components/VideoCarousel';
 import VerticalVideoCarousel from '@/components/VerticalVideoCarousel';
+import ProgressiveVideo from '@/app/components/ProgressiveVideo';
 import Image from 'next/image';
 import Footer from '@/app/components/Footer';
 
@@ -172,20 +173,15 @@ export default function PortfolioPage() {
             >
               {/* Version "Après" (Base layer) */}
               <div className="absolute inset-0">
-                <video
-                  ref={afterVideoRef}
+                <ProgressiveVideo
+                  src="/final-cut.mp4"
+                  poster="/final-cut-poster.jpg"
+                  className="w-full h-full"
                   autoPlay
-                  muted
                   loop
+                  muted
                   playsInline
-                  className="w-full h-full object-cover"
-                  preload="auto"
-                >
-                  <source
-                    src="/final-cut.mp4"
-                    type="video/mp4"
-                  />
-                </video>
+                />
               </div>
 
               {/* Version "Avant" (Overlay avec clip-path) */}
@@ -195,20 +191,15 @@ export default function PortfolioPage() {
                   clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
                 }}
               >
-                <video
-                  ref={beforeVideoRef}
+                <ProgressiveVideo
+                  src="/raw-version.mp4"
+                  poster="/raw-version-poster.jpg"
+                  className="w-full h-full"
                   autoPlay
-                  muted
                   loop
+                  muted
                   playsInline
-                  className="w-full h-full object-cover"
-                  preload="auto"
-                >
-                  <source
-                    src="/raw-version.mp4"
-                    type="video/mp4"
-                  />
-                </video>
+                />
               </div>
 
               {/* Slider Handle */}

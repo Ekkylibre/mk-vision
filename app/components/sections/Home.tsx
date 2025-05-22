@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import ProgressiveVideo from '../ProgressiveVideo';
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -8,10 +9,10 @@ export default function Home() {
 
   useEffect(() => {
     setIsLoaded(true);
-    // Délai pour l'animation du bouton
     const timer = setTimeout(() => {
       setIsButtonLoaded(true);
-    }, 1000); // 1 seconde de délai après le h1
+    }, 1000);
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,35 +25,25 @@ export default function Home() {
 
   return (
     <section className="relative min-h-screen bg-black" id="home" aria-label="Accueil">
-      {/* Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden" aria-hidden="true">
         <div className="absolute inset-0 bg-black/60 z-10" />
-        <video
+        <ProgressiveVideo
+          src="/filmmaker-showreel.mp4"
+          poster="/filmmaker-showreel-poster.jpg"
+          className="w-full h-full opacity-80"
           autoPlay
-          muted
           loop
+          muted
           playsInline
-          className="object-cover w-full h-full opacity-80"
-          aria-label="Vidéo de présentation"
-        >
-          <source
-            src="/filmmaker-showreel.mp4"
-            type="video/mp4"
-          />
-          <track
-            kind="captions"
-            src="/captions/home-video.vtt"
-            srcLang="fr"
-            label="Français"
-          />
-        </video>
+        />
       </div>
 
       {/* Content */}
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-4">
         <div
-          className={`transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-            }`}
+          className={`transform transition-all duration-1000 ${
+            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}
         >
           <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center">
             MAKEY SIONG
