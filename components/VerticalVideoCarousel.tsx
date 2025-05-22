@@ -17,15 +17,50 @@ interface VerticalVideoCarouselProps {
 export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(2);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const playPromises = useRef<Promise<void>[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     videoRefs.current = videoRefs.current.slice(0, videos.length);
-    const timer = setTimeout(() => {
-      setIsInitialLoad(false);
-    }, 2000);
-    return () => clearTimeout(timer);
+    
+    // Configuration de l'Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            const timer = setTimeout(() => {
+              setIsInitialLoad(false);
+            }, 2000);
+            return () => clearTimeout(timer);
+          } else {
+            setIsVisible(false);
+            // Pause toutes les vidéos quand le carrousel n'est pas visible
+            videoRefs.current.forEach((video) => {
+              if (video) {
+                video.pause();
+              }
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Le carrousel est considéré comme visible quand 50% est dans la vue
+        rootMargin: '100px' // Déclenche un peu avant que le carrousel soit complètement visible
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
   }, [videos]);
 
   const handleScroll = (direction: 'left' | 'right') => {
@@ -37,8 +72,9 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
   };
 
   const playVideo = async (video: HTMLVideoElement) => {
+    if (!isVisible) return; // Ne pas jouer la vidéo si le carrousel n'est pas visible
+    
     try {
-      // Annuler toutes les promesses de lecture en cours
       playPromises.current.forEach(promise => {
         if (promise) {
           // @ts-ignore - La propriété 'abort' existe sur les promesses AbortController
@@ -47,7 +83,6 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
       });
       playPromises.current = [];
 
-      // Créer une nouvelle promesse de lecture
       const playPromise = video.play();
       playPromises.current.push(playPromise);
       await playPromise;
@@ -59,6 +94,8 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
   };
 
   useEffect(() => {
+    if (!isVisible) return; // Ne pas gérer les vidéos si le carrousel n'est pas visible
+
     videoRefs.current.forEach((video, index) => {
       if (video) {
         if (index === currentIndex) {
@@ -70,7 +107,7 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
         }
       }
     });
-  }, [currentIndex]);
+  }, [currentIndex, isVisible]);
 
   const getVisibleVideos = () => {
     const visibleCount = 5;
@@ -93,23 +130,24 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
   };
 
   return (
-    <div className="relative h-full flex items-center justify-center">
-      <div className="relative w-full h-full flex items-center justify-center gap-4">
+    <div ref={containerRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full flex flex-row items-center justify-center gap-2 px-20">
         {getVisibleVideos().map((video, index) => {
           const offset = index - 2;
           const isCenter = offset === 0;
           const isAdjacent = Math.abs(offset) === 1;
+          const isFar = Math.abs(offset) >= 2;
 
-          const initialAnimation = {
-            opacity: 0,
-            scale: 0.8,
-            y: offset * 100
-          };
+          const initialAnimation = isInitialLoad ? {
+            x: isCenter ? 0 : (offset > 0 ? -100 : 100),
+            scale: isCenter ? 1 : 0.8,
+            opacity: isCenter ? 1 : 0
+          } : false;
 
           const navigationAnimation = {
-            opacity: isCenter ? 1 : 0.5,
+            x: 0,
             scale: isCenter ? 1 : 0.8,
-            y: 0
+            opacity: isFar ? 0.3 : 1
           };
 
           return (
@@ -161,7 +199,7 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
 
       <motion.button
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
         transition={{ 
           delay: isInitialLoad ? 1.2 : 0,
           duration: 0.8,
@@ -174,7 +212,7 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
       </motion.button>
       <motion.button
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
         transition={{ 
           delay: isInitialLoad ? 1.2 : 0,
           duration: 0.8,
