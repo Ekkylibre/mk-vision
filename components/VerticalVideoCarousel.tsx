@@ -18,6 +18,7 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
   const [currentIndex, setCurrentIndex] = useState(2);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const playPromises = useRef<Promise<void>[]>([]);
 
   useEffect(() => {
     videoRefs.current = videoRefs.current.slice(0, videos.length);
@@ -35,11 +36,33 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
     }
   };
 
+  const playVideo = async (video: HTMLVideoElement) => {
+    try {
+      // Annuler toutes les promesses de lecture en cours
+      playPromises.current.forEach(promise => {
+        if (promise) {
+          // @ts-ignore - La propriété 'abort' existe sur les promesses AbortController
+          promise.abort?.();
+        }
+      });
+      playPromises.current = [];
+
+      // Créer une nouvelle promesse de lecture
+      const playPromise = video.play();
+      playPromises.current.push(playPromise);
+      await playPromise;
+    } catch (error: any) {
+      if (error.name !== 'AbortError') {
+        console.log('Erreur de lecture vidéo:', error);
+      }
+    }
+  };
+
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (video) {
         if (index === currentIndex) {
-          video.play();
+          playVideo(video);
           video.loop = true;
         } else {
           video.pause();
@@ -70,26 +93,23 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
   };
 
   return (
-    <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full flex flex-row items-center justify-center gap-2 px-20">
+    <div className="relative h-full flex items-center justify-center">
+      <div className="relative w-full h-full flex items-center justify-center gap-4">
         {getVisibleVideos().map((video, index) => {
           const offset = index - 2;
           const isCenter = offset === 0;
           const isAdjacent = Math.abs(offset) === 1;
-          const isFar = Math.abs(offset) >= 2;
 
-          // Configuration de l'animation initiale
-          const initialAnimation = isInitialLoad ? {
-            x: isCenter ? 0 : (offset > 0 ? -100 : 100),
-            scale: isCenter ? 1 : 0.8,
-            opacity: isCenter ? 1 : 0
-          } : false;
+          const initialAnimation = {
+            opacity: 0,
+            scale: 0.8,
+            y: offset * 100
+          };
 
-          // Configuration de l'animation de navigation
           const navigationAnimation = {
-            x: 0,
+            opacity: isCenter ? 1 : 0.5,
             scale: isCenter ? 1 : 0.8,
-            opacity: isFar ? 0.3 : 1
+            y: 0
           };
 
           return (
@@ -132,6 +152,7 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
                 className="w-full h-full object-cover rounded-lg"
                 playsInline
                 muted
+                preload="metadata"
               />
             </motion.div>
           );
