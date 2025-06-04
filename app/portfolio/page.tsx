@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
 import { PORTFOLIO_ITEMS, VERTICAL_VIDEOS } from '@/app/constants';
 import VideoCarousel from '@/app/components/VideoCarousel';
 import VerticalVideoCarousel from '@/components/VerticalVideoCarousel';
-import ProgressiveVideo from '@/app/components/ProgressiveVideo';
 import Image from 'next/image';
 import Footer from '@/app/components/Footer';
 
@@ -15,32 +14,11 @@ interface VideoModalState {
 }
 
 export default function PortfolioPage() {
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
   const [videoModal, setVideoModal] = useState<VideoModalState>({
     isOpen: false,
     projectId: null,
   });
   const [isMobile, setIsMobile] = useState(false);
-
-  const beforeVideoRef = useRef<HTMLVideoElement>(null);
-  const afterVideoRef = useRef<HTMLVideoElement>(null);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) {
-      const container = e.currentTarget.getBoundingClientRect();
-      const position = ((e.clientX - container.left) / container.width) * 100;
-      setSliderPosition(Math.min(Math.max(position, 0), 100));
-    }
-  };
 
   const handleKeyDown = (e: React.KeyboardEvent, projectId: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -56,39 +34,6 @@ export default function PortfolioPage() {
   const closeVideoModal = () => {
     setVideoModal({ isOpen: false, projectId: null });
   };
-
-  // Synchronisation des vidéos
-  useEffect(() => {
-    const beforeVideo = beforeVideoRef.current;
-    const afterVideo = afterVideoRef.current;
-
-    if (!beforeVideo || !afterVideo) return;
-
-    const syncVideos = () => {
-      if (Math.abs(beforeVideo.currentTime - afterVideo.currentTime) > 0.1) {
-        afterVideo.currentTime = beforeVideo.currentTime;
-      }
-    };
-
-    beforeVideo.addEventListener('play', syncVideos);
-    beforeVideo.addEventListener('seeking', syncVideos);
-
-    // Synchronisation toutes les secondes pour garantir
-    const syncInterval = setInterval(syncVideos, 1000);
-
-    return () => {
-      beforeVideo.removeEventListener('play', syncVideos);
-      beforeVideo.removeEventListener('seeking', syncVideos);
-      clearInterval(syncInterval);
-    };
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('mouseup', handleMouseUp);
-    return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, []);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -110,7 +55,6 @@ export default function PortfolioPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">Portfolio</h1>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto text-center mb-16">
-            {/* Marge fixe de 16rem pour maintenir un espacement cohérent avec la page blog */}
             Découvrez mes réalisations vidéo, du film corporate au documentaire, en passant par les contenus pour les réseaux sociaux.
           </p>
 
@@ -159,66 +103,6 @@ export default function PortfolioPage() {
               onClose={closeVideoModal}
             />
           )}
-
-          {/* Before/After Comparison */}
-          <section className="mt-20">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Avant / Après</h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto text-center">
-              Découvrez la transformation de mes projets, du tournage brut au montage final.
-            </p>
-            <div
-              className="relative aspect-video rounded-lg overflow-hidden cursor-ew-resize"
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-            >
-              {/* Version "Après" (Base layer) */}
-              <div className="absolute inset-0">
-                <ProgressiveVideo
-                  src="/final-cut.mp4"
-                  className="w-full h-full"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-              </div>
-
-              {/* Version "Avant" (Overlay avec clip-path) */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
-                }}
-              >
-                <ProgressiveVideo
-                  src="/raw-version.mp4"
-                  className="w-full h-full"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-              </div>
-
-              {/* Slider Handle */}
-              <div
-                className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
-                style={{ left: `${sliderPosition}%` }}
-              >
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <div className="w-1 h-4 bg-black rounded-full"></div>
-                </div>
-              </div>
-
-              {/* Labels */}
-              <div className="absolute top-4 left-4 bg-black/50 px-3 py-1 rounded text-sm text-white">
-                Avant
-              </div>
-              <div className="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded text-sm text-white">
-                Après
-              </div>
-            </div>
-          </section>
         </div>
       </main>
       <Footer />

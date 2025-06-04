@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -52,13 +52,14 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    const currentContainer = containerRef.current;
+    if (currentContainer) {
+      observer.observe(currentContainer);
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (currentContainer) {
+        observer.unobserve(currentContainer);
       }
     };
   }, [videos]);
@@ -71,7 +72,7 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
     }
   };
 
-  const playVideo = async (video: HTMLVideoElement) => {
+  const playVideo = useCallback(async (video: HTMLVideoElement) => {
     if (!isVisible) return; // Ne pas jouer la vidéo si le carrousel n'est pas visible
     
     try {
@@ -91,7 +92,7 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
         console.log('Erreur de lecture vidéo:', error);
       }
     }
-  };
+  }, [isVisible]);
 
   useEffect(() => {
     if (!isVisible) return; // Ne pas gérer les vidéos si le carrousel n'est pas visible
@@ -107,7 +108,7 @@ export default function VerticalVideoCarousel({ videos }: VerticalVideoCarouselP
         }
       }
     });
-  }, [currentIndex, isVisible]);
+  }, [currentIndex, isVisible, playVideo]);
 
   const getVisibleVideos = () => {
     const visibleCount = 5;
