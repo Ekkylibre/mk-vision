@@ -20,6 +20,12 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose();
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        previousProject();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        nextProject();
       }
     };
 
@@ -56,26 +62,26 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
   };
 
   return (
-    <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
-      <div ref={modalRef} className="relative w-full max-w-6xl mx-4">
+    <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+      <div ref={modalRef} className="relative w-full max-w-4xl md:max-w-5xl lg:max-w-6xl">
         {/* Header avec titre et bouton fermer */}
-        <div className="absolute -top-12 left-0 right-0 flex justify-between items-center">
-          <div className="flex-1 min-w-0 pr-4">
-            <h3 className="text-2xl font-bold text-white truncate">
+        <div className="absolute -top-8 md:-top-10 lg:-top-12 left-0 right-0 flex justify-between items-center">
+          <div className="flex-1 min-w-0 pr-2 md:pr-4">
+            <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white truncate">
               {currentProject.title}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="flex-shrink-0 text-white hover:text-gray-300 transition-colors"
-            aria-label="Close"
+            className="flex-shrink-0 text-white hover:text-gray-300 transition-colors p-1"
+            aria-label="Fermer"
           >
-            <X className="w-8 h-8" />
+            <X className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
           </button>
         </div>
 
         {/* Video Container */}
-        <div className="relative aspect-video bg-black">
+        <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
           {currentProject.videoUrl && (
             <iframe
               src={`https://www.youtube.com/embed/${getYouTubeVideoId(currentProject.videoUrl)}?autoplay=1&rel=0&modestbranding=1`}
@@ -92,23 +98,23 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
         <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
           <button
             onClick={previousProject}
-            className="pointer-events-auto p-4 text-white hover:text-gray-300 transition-colors transform -translate-x-24 bg-black/30 rounded-full backdrop-blur-sm hover:bg-black/50"
-            aria-label="Previous project"
+            className="pointer-events-auto p-2 md:p-3 lg:p-4 text-white hover:text-gray-300 transition-colors transform -translate-x-6 md:-translate-x-12 lg:-translate-x-24"
+            aria-label="Projet précédent"
           >
-            <ChevronLeft className="w-10 h-10" />
+            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />
           </button>
           <button
             onClick={nextProject}
-            className="pointer-events-auto p-4 text-white hover:text-gray-300 transition-colors transform translate-x-24 bg-black/30 rounded-full backdrop-blur-sm hover:bg-black/50"
-            aria-label="Next project"
+            className="pointer-events-auto p-2 md:p-3 lg:p-4 text-white hover:text-gray-300 transition-colors transform translate-x-6 md:translate-x-12 lg:translate-x-24"
+            aria-label="Projet suivant"
           >
-            <ChevronRight className="w-10 h-10" />
+            <ChevronRight className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />
           </button>
         </div>
 
         {/* Project Counter */}
-        <div className="absolute -bottom-12 right-0 text-white">
-          <p className="text-sm">
+        <div className="absolute -bottom-8 md:-bottom-10 lg:-bottom-12 right-0 text-white">
+          <p className="text-xs md:text-sm">
             {currentProjectIndex + 1} / {PORTFOLIO_ITEMS.length}
           </p>
         </div>

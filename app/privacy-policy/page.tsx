@@ -1,7 +1,18 @@
-'use client';
-
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Politique de Confidentialité',
+  description: 'Politique de confidentialité de Makey Siong - Vidéaste et réalisateur. Informations sur la collecte et l\'utilisation de vos données personnelles.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://www.makeyvision.com/privacy-policy',
+  },
+};
 
 export default function PrivacyPolicy() {
   const router = useRouter();

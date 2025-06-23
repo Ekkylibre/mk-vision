@@ -33,6 +33,58 @@ export const PORTFOLIO_ITEMS = [
   }
 ] as const;
 
+export const YOUTUBE_SHORTS = [
+  {
+    id: 'short-1',
+    title: "Fake FPV road",
+    thumbnail: "https://img.youtube.com/vi/sYFsfLolaS4/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/sYFsfLolaS4",
+    shortId: "sYFsfLolaS4"
+  },
+  {
+    id: 'short-2',
+    title: "Drone Robot Effect",
+    thumbnail: "https://img.youtube.com/vi/aDizywuklZc/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/aDizywuklZc",
+    shortId: "aDizywuklZc"
+  },
+  {
+    id: 'short-3',
+    title: "Rig Camera Today",
+    thumbnail: "https://img.youtube.com/vi/xssgbU0jhyA/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/xssgbU0jhyA",
+    shortId: "xssgbU0jhyA"
+  },
+  {
+    id: 'short-4',
+    title: "Through the nature",
+    thumbnail: "https://img.youtube.com/vi/4SftYFXOIEU/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/4SftYFXOIEU",
+    shortId: "4SftYFXOIEU"
+  },
+  {
+    id: 'short-5',
+    title: "Aprilia RSV4 - Cinematic EDIT",
+    thumbnail: "https://img.youtube.com/vi/ydVRECNkA0U/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/ydVRECNkA0U",
+    shortId: "ydVRECNkA0U"
+  },
+  {
+    id: 'short-6',
+    title: "Aprilia RSV4 - Cinematic Video",
+    thumbnail: "https://img.youtube.com/vi/GVs9kgX9PHk/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/GVs9kgX9PHk",
+    shortId: "GVs9kgX9PHk"
+  },
+  {
+    id: 'short-7',
+    title: "Il faut des ACCESSOIRES ✨",
+    thumbnail: "https://img.youtube.com/vi/dv_v81AeIYU/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/dv_v81AeIYU",
+    shortId: "dv_v81AeIYU"
+  }
+] as const;
+
 export const SOCIAL_LINKS = [
   {
     id: 'instagram',
@@ -64,47 +116,4 @@ export const SOCIAL_LINKS = [
     url: 'https://youtube.com',
     icon: 'Youtube'
   }
-] as const;
-
-export const VERTICAL_VIDEOS = [
-  {
-    id: 'nesquick-reel',
-    title: 'Nesquick REEL',
-    src: '/Nesquick REEL .mp4'
-  },
-  {
-    id: 'ducati',
-    title: 'Ducati',
-    src: '/Ducati 1ère.mp4'
-  },
-  {
-    id: 'reel-fecamp',
-    title: 'REEL Fécamp',
-    src: '/REEL fécamp 1.mp4'
-  },
-  {
-    id: 'drone-robot',
-    title: 'Drone Robot',
-    src: '/Drone robot.mp4'
-  },
-  {
-    id: '360',
-    title: '360°',
-    src: '/360.mp4'
-  },
-  {
-    id: 'filmmaker-showreel',
-    title: 'Filmmaker Showreel',
-    src: '/filmmaker-showreel.mp4'
-  },
-  {
-    id: 'kenou-teaser-1',
-    title: 'KENOU Teaser 1',
-    src: '/KENOU Teaser 1 format portrait.mp4'
-  },
-  {
-    id: 'kenou-teaser-2',
-    title: 'KENOU Teaser 2',
-    src: '/KENOU Teaser 2 format portrait.mp4'
-  },
 ] as const;

@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
-import { PORTFOLIO_ITEMS, VERTICAL_VIDEOS } from '@/app/constants';
+import { PORTFOLIO_ITEMS } from '@/app/constants';
 import VideoCarousel from '@/app/components/VideoCarousel';
-import VerticalVideoCarousel from '@/components/VerticalVideoCarousel';
+import YouTubeShortsGrid from '@/app/components/YouTubeShortsGrid';
+import SEOStructuredData from '@/app/components/SEOStructuredData';
 import Image from 'next/image';
 import Footer from '@/app/components/Footer';
 
@@ -18,7 +19,6 @@ export default function PortfolioPage() {
     isOpen: false,
     projectId: null,
   });
-  const [isMobile, setIsMobile] = useState(false);
 
   const handleKeyDown = (e: React.KeyboardEvent, projectId: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -35,21 +35,9 @@ export default function PortfolioPage() {
     setVideoModal({ isOpen: false, projectId: null });
   };
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
-
   return (
     <>
+      <SEOStructuredData />
       <main className="bg-black min-h-screen pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">Portfolio</h1>
@@ -58,12 +46,10 @@ export default function PortfolioPage() {
             Découvrez mes réalisations vidéo, du film corporate au documentaire, en passant par les contenus pour les réseaux sociaux.
           </p>
 
-          {/* Carrousel Vertical - Masqué en mobile */}
-          {!isMobile && (
-            <div className="h-screen mb-20">
-              <VerticalVideoCarousel videos={VERTICAL_VIDEOS} />
-            </div>
-          )}
+          {/* Section YouTube Shorts */}
+          <div className="mb-20">
+            <YouTubeShortsGrid />
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {PORTFOLIO_ITEMS.map((project) => (
@@ -85,11 +71,10 @@ export default function PortfolioPage() {
                   <button
                     onClick={() => openVideoModal(project.id)}
                     onKeyDown={(e) => handleKeyDown(e, project.id)}
-                    className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full backdrop-blur-sm transition-all duration-300"
+                    className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
                     aria-label={`Regarder le projet ${project.title}`}
                   >
                     <Play className="w-5 h-5" />
-                    <span>Watch Project</span>
                   </button>
                 </div>
               </div>

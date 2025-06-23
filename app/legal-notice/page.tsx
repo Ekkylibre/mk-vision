@@ -1,7 +1,20 @@
 'use client';
 
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Mentions Légales',
+  description: 'Mentions légales de Makey Siong - Vidéaste et réalisateur. Informations légales sur l\'éditeur, l\'hébergement et la propriété intellectuelle.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://www.makeyvision.com/legal-notice',
+  },
+};
 
 export default function LegalNotice() {
   const router = useRouter();

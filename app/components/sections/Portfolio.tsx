@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Play } from 'lucide-react';
 import { PORTFOLIO_ITEMS } from '@/app/constants';
 import VideoCarousel from '@/app/components/VideoCarousel';
+import YouTubeShortsGrid from '@/app/components/YouTubeShortsGrid';
 import Image from 'next/image';
 
 interface VideoModalState {
@@ -36,6 +37,12 @@ export default function Portfolio() {
     <section id="portfolio" className="bg-black py-20" aria-label="Portfolio">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">Portfolio</h2>
+        
+        {/* Section YouTube Shorts */}
+        <div className="mb-20">
+          <YouTubeShortsGrid />
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PORTFOLIO_ITEMS.map((project) => (
             <div
@@ -56,11 +63,10 @@ export default function Portfolio() {
                 <button
                   onClick={() => openVideoModal(project.id)}
                   onKeyDown={(e) => handleKeyDown(e, project.id)}
-                  className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full backdrop-blur-sm transition-all duration-300"
+                  className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
                   aria-label={`Regarder le projet ${project.title}`}
                 >
                   <Play className="w-5 h-5" />
-                  <span>Watch Project</span>
                 </button>
               </div>
             </div>
