@@ -47,7 +47,12 @@ export default function Portfolio() {
           {PORTFOLIO_ITEMS.map((project) => (
             <div
               key={project.id}
-              className="group relative aspect-video overflow-hidden rounded-lg bg-gray-900"
+              className="group relative aspect-video overflow-hidden rounded-lg bg-gray-900 cursor-pointer"
+              onClick={() => openVideoModal(project.id)}
+              onKeyDown={(e) => handleKeyDown(e, project.id)}
+              tabIndex={0}
+              role="button"
+              aria-label={`Regarder le projet ${project.title}`}
             >
               <Image
                 src={project.thumbnail}
@@ -60,14 +65,9 @@ export default function Portfolio() {
                 className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center"
               >
                 <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
-                <button
-                  onClick={() => openVideoModal(project.id)}
-                  onKeyDown={(e) => handleKeyDown(e, project.id)}
-                  className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
-                  aria-label={`Regarder le projet ${project.title}`}
-                >
+                <div className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300">
                   <Play className="w-5 h-5" />
-                </button>
+                </div>
               </div>
             </div>
           ))}

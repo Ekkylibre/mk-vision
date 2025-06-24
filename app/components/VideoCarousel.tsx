@@ -118,6 +118,22 @@ export default function VideoCarousel({ initialProjectId, onClose }: VideoCarous
             {currentProjectIndex + 1} / {PORTFOLIO_ITEMS.length}
           </p>
         </div>
+
+        {/* Indicateurs de navigation */}
+        <div className="absolute -bottom-8 md:-bottom-10 lg:-bottom-12 left-0 flex gap-1 md:gap-2">
+          {PORTFOLIO_ITEMS.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setCurrentProjectId(PORTFOLIO_ITEMS[index].id);
+              }}
+              className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-colors ${
+                index === currentProjectIndex ? 'bg-white' : 'bg-white/30'
+              }`}
+              aria-label={`Aller au projet ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
