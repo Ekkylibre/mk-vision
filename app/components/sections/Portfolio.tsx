@@ -17,6 +17,17 @@ export default function Portfolio() {
     isOpen: false,
     projectId: null,
   });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Déclencher l'animation après l'animation des shorts
+    // 6 shorts × 150ms de délai + 700ms de durée = 1600ms
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1600);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent, projectId: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -44,10 +55,14 @@ export default function Portfolio() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {PORTFOLIO_ITEMS.map((project) => (
+          {PORTFOLIO_ITEMS.map((project, index) => (
             <div
               key={project.id}
-              className="group relative aspect-video overflow-hidden rounded-lg bg-gray-900 cursor-pointer"
+              className={`group relative aspect-video overflow-hidden rounded-lg bg-gray-900 cursor-pointer transition-all duration-1000 ease-out ${
+                isVisible 
+                  ? 'opacity-100' 
+                  : 'opacity-0'
+              }`}
               onClick={() => openVideoModal(project.id)}
               onKeyDown={(e) => handleKeyDown(e, project.id)}
               tabIndex={0}

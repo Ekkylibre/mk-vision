@@ -75,13 +75,6 @@ export const YOUTUBE_SHORTS = [
     thumbnail: "https://img.youtube.com/vi/GVs9kgX9PHk/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/shorts/GVs9kgX9PHk",
     shortId: "GVs9kgX9PHk"
-  },
-  {
-    id: 'short-7',
-    title: "Il faut des ACCESSOIRES ✨",
-    thumbnail: "https://img.youtube.com/vi/dv_v81AeIYU/maxresdefault.jpg",
-    videoUrl: "https://www.youtube.com/shorts/dv_v81AeIYU",
-    shortId: "dv_v81AeIYU"
   }
 ] as const;
 

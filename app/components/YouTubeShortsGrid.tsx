@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
 import { YOUTUBE_SHORTS } from '@/app/constants';
 import YouTubeShortsCarousel from './YouTubeShortsCarousel';
@@ -16,6 +16,16 @@ export default function YouTubeShortsGrid() {
     isOpen: false,
     shortId: null,
   });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Déclencher l'animation après un court délai
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent, shortId: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -34,11 +44,18 @@ export default function YouTubeShortsGrid() {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2 sm:gap-3 md:gap-4">
-        {YOUTUBE_SHORTS.map((short) => (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
+        {YOUTUBE_SHORTS.map((short, index) => (
           <div
             key={short.id}
-            className="group relative aspect-[9/16] overflow-hidden rounded-lg bg-gray-900 cursor-pointer"
+            className={`group relative aspect-[9/16] overflow-hidden rounded-lg bg-gray-900 cursor-pointer transform transition-all duration-700 ease-out ${
+              isVisible 
+                ? 'translate-x-0 opacity-100 scale-100' 
+                : 'translate-x-full opacity-0 scale-95'
+            }`}
+            style={{
+              transitionDelay: `${index * 150}ms`
+            }}
             onClick={() => openShortsModal(short.shortId)}
             onKeyDown={(e) => handleKeyDown(e, short.shortId)}
             tabIndex={0}
