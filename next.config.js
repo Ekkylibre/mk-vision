@@ -29,7 +29,6 @@ const nextConfig = {
   // Ajout de la configuration pour améliorer la stabilité
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
